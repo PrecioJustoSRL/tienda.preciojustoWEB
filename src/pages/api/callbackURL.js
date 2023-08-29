@@ -23,7 +23,7 @@ export default function handler(req, res) {
                 const object = {
                     state: "000",
                     message: "Correcto",
-                    uuid: req.body.Id,
+                    uuid: req.body.Id,     
                     amount: req.body.Amount
                 }
                 // writeUserData('Transacciones', object)
