@@ -12,7 +12,7 @@ export default function handler(req, res) {
 
         if (req.headers.authorization === 'Basic UFJFQ0pVU1RPX1VTRVI6NkFFNTJBNUUtM0E3MC00MTQwLTlERUUtRTkxNTU3NTBBNDFG') {
 
-            if (req.body && req.body.Description === 'PROCESADO') {
+            if (req.body && req.body.Description.toLowerCase() === 'procesado') {
                 const resData = {
                     State: "000",
                     Message: "Correcto",
@@ -27,7 +27,7 @@ export default function handler(req, res) {
                     amount: req.body.Amount
                 }
                 // writeUserData('Transacciones', object)
-                updateUserData('Transacciones', object, req.body.Id,)
+                updateUserData('Pedido', object, req.body.Id, 'idBCP')
                 res.setHeader('Content-Type', 'application/json')
                 return res.json(resData)
 
@@ -45,7 +45,7 @@ export default function handler(req, res) {
                     uuid: req.body.Id,
 
                 }
-                writeUserData('Transacciones', object)
+                updateUserData('Pedido', object, req.body.Id, 'idBCP')
 
                 res.setHeader('Content-Type', 'application/json')
                 return res.json(resData)

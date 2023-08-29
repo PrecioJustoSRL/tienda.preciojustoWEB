@@ -141,7 +141,7 @@ function Home() {
                 </label>
                 <input id="qr" type="file" className='hidden' onChange={HandlerOnChange} accept="image/* " />
             </div>}
-            {webScann && <div className={`lg:hidden`}>
+            {webScann && <div className={`lg:hidden relative bg-white z-50`}>
                 <QRscanner></QRscanner>
             </div>}
 
