@@ -63,7 +63,7 @@ function Comprar({ theme, styled, click, children }) {
     try {
       console.log('her')
       //**********************BCP*************************
-      const res = await fetch('https://tienda.preciojusto.pro/api', {
+      const res = await fetch('https://preciojusto.pro/api', {
         method: 'POST',
         body: JSON.stringify({ amount: amount + (check ? 350 : 0) }),
         headers: new Headers({
