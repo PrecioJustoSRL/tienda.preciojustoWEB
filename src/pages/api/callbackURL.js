@@ -12,7 +12,7 @@ export default function handler(req, res) {
 
         if (req.headers.authorization === 'Basic UFJFQ0pVU1RPX1VTRVI6NkFFNTJBNUUtM0E3MC00MTQwLTlERUUtRTkxNTU3NTBBNDFG') {
 
-            if (req.body && req.body.Description.toLowerCase() === 'procesado') {
+            if (req.body && req.body.Description.toLowerCase === 'PROCESADO') {
                 const resData = {
                     State: "000",
                     Message: "Correcto",
