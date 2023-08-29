@@ -72,7 +72,6 @@ function Comprar({ theme, styled, click, children }) {
       })
       const data = await res.json()
       setQrBCP(data.data.qrImage)
-      setQrBCP(46546)
 
       const write = {
         idBCP: data.data.id, 
@@ -92,9 +91,9 @@ function Comprar({ theme, styled, click, children }) {
       // router.push('/Cliente/Comprar/Detalle')
       // setTimeout(() => { updateUserData('Pedido', { message: 'Correcto' }, data.data.id, 'idBCP') }, 6000)
 
-      const interval = setInterval(() => {
-        readUserData('Pedido', data.data.id, setPaySuccess, 'idBCP' )
-      }, 3000)
+      // const interval = setInterval(() => {
+      //   readUserData('Pedido', data.data.id, setPaySuccess, 'idBCP' )
+      // }, 3000)
 
     } catch (err) {
       console.log(err)
