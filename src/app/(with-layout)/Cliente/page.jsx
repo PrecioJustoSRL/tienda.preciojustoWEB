@@ -228,7 +228,7 @@ function Home() {
                     </div>
                     <Button theme="Primary" click={()=>setFilterNav(false)}>Filtrar</Button>
                 </div>}
-
+                 
                 <div className="relative bg-transparent lg:bg-transparent mt-6  rounded-t-[50px]  w-full flex flex-col items-center justify-center px-5 pt-8 pb-16 lg:pt-0">
                     {filter.length == 0 && filterQR.length == 0 &&
                         productDB !== null && productDB !== undefined &&
