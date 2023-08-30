@@ -53,7 +53,7 @@ function Home() {
         router.push('/Distribuidor/Perfil')
     }
 
-    console.log(state)
+    // console.log(state)
 
     return (
         <div className='w-full flex justify-center'>

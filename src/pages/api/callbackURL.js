@@ -6,7 +6,7 @@ const { writeUserData, updateUserData } = require('./supabase.js');
 const axios = require('axios');
 
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
 
     if (req.method === 'POST') {
 
@@ -23,11 +23,13 @@ export default function handler(req, res) {
                 const object = {
                     state: "000",
                     message: "Correcto",
-                    uuid: req.body.Id,     
+                    uuid: req.body.Id,
                     amount: req.body.Amount
                 }
                 // writeUserData('Transacciones', object)
-                updateUserData('Pedido', object, req.body.Id, 'idBCP')
+                const data = await updateUserData('Pedido', object, req.body.Id, 'idBCP')
+
+
                 res.setHeader('Content-Type', 'application/json')
                 return res.json(resData)
 

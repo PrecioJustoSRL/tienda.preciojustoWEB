@@ -43,7 +43,7 @@ export default function VideoClient({ theme, click, children }) {
 
 
   return (
-    <div className={`fixed  w-[75%] lg:w-full z-40   right-0 transition transition-all lg:hidden ${introClientVideo ? 'bottom-[65px]' : 'bottom-[-100vh]'}`}>
+    <div className={`fixed  w-[75%] lg:w-full z-40   right-0 transition transition-all lg:hidden ${introClientVideo ? 'bottom-[65px] ' : 'bottom-[-100vh]'}`}>
       <div className='z-30 absolute px-5 top-[-50px] h-[20px]  w-full'>
         {introClientVideo && <div className='flex'>
           <span className='z-50 absolute flex justify-center items-center top-[0px] right-[15px] bg-gray-800 border-[2px] border-gray-50 w-[150px] text-[white] text-center text-[16px] py-3 rounded-full' onClick={handlerPlay}>

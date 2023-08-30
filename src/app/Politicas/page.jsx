@@ -1,9 +1,7 @@
 'use client'
 
 
-
 import Subtitle from '@/components/Subtitle'
-
 
 import { useRouter } from 'next/navigation';
 import { useUser } from '@/context/Context.js'

@@ -26,10 +26,12 @@ function Home() {
 
 
     function onChangeHandler(e, i) {
-        setState({ ...state, [i.qr]: { ...state[i.uuid], uuid: i.uuid, [e.target.name]: e.target.value } })
+        console.log(i)
+        setState({ ...state, [i.qr]: { ...state[i.qr], qr: i.qr, [e.target.name]: e.target.value } })
     }
 
     function save(e, i) {
+        console.log(state[i.qr])
         e.preventDefault()
         updateUserData('Receta', state[i.qr], i.qr, 'qr')
         const obj = { ...state }
@@ -51,6 +53,11 @@ function Home() {
         // setState(obj)
         setModal('')
     }  
+    function sortArray(x, y) {
+        if (x['paciente'].toLowerCase() < y['paciente'].toLowerCase()) { return -1 }
+        if (x['paciente'].toLowerCase() > y['paciente'].toLowerCase()) { return 1 }
+        return 0
+    }
 
     useEffect(() => {
         readUserData('Receta', user.uuid, setRecetaDBP, 'medico')
@@ -85,7 +92,7 @@ function Home() {
                     </tr>
                 </thead>
                 <tbody>
-                    {recetaDBP && recetaDBP !== undefined && recetaDBP.map((i, index) => {
+                    {recetaDBP && recetaDBP !== undefined && recetaDBP.sort(sortArray).map((i, index) => {
                         return <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={index}>
                             <td className="px-3 py-4  flex font-semibold text-gray-900 dark:text-white">
                                 <span className='h-full flex py-2'>{index + 1}</span>
@@ -103,7 +110,6 @@ function Home() {
                                 {/* {i['hospital']} */}
                             </td>
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white ">
-                                {console.log(JSON.parse(i.receta))}
                                 {JSON.parse(i.receta).map((i, index) => 
                                     <li>{i['nombre de producto 1']}{'  (*'}{i['cantidad']}{')'}</li>
                                 )}

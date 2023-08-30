@@ -60,7 +60,6 @@ export default function Home() {
 
 
 
-  console.log(introVideo)
 
   const signInHandler = async (e) => {
     e.preventDefault()
@@ -84,7 +83,6 @@ export default function Home() {
     user === undefined && onAuth(setUserProfile)
     if (user !== undefined && user !== null) router.replace('/Cliente')
   }, [user])
-  console.log(user)
 
   return (
     user === undefined

@@ -9,7 +9,7 @@ const onAuth = (setUserProfile) => {
                 .from('Users')
                 .select()
                 .eq('uuid', session.user.id)
-            // console.log(data[0])
+            console.log(data[0])
             data !== null && data.length
                 ? setUserProfile(data[0])
                 : setUserProfile(session.user)

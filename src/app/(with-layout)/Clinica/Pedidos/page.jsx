@@ -98,6 +98,9 @@ function Home() {
                         <th scope="col" className="px-3 py-3">
                             Fecha
                         </th>
+                        {userDB && userDB[0].access == 'Verificadora' && <th scope="col" className="px-3 py-3">
+                            Pagar pot QR
+                        </th>}
                         <th scope="col" className="px-3 py-3">
                             Eliminar
                         </th>
@@ -130,7 +133,9 @@ function Home() {
                             <td className="px-3 py-4 h-full font-semibold text-gray-900 dark:text-white">
                                 {getDayMonthYear(i['created_at'])}
                             </td>
-
+                            {userDB && userDB[0].access == 'Verificadora' && <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                                <Button theme={"Success"} click={() => save(i)}>Pagar pot QR</Button>
+                            </td>}
                             <td className="px-3 py-4">
                                 {state[i.uuid]
                                     ? <Button theme={"Primary"} click={() => save(i)}>Guardar</Button>

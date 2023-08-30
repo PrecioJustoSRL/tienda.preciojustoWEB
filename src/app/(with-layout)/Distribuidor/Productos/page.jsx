@@ -64,10 +64,10 @@ function Home() {
 
         const data = await readUserData('Producto', queryUuid, null, 'distribuidor')
 
-        // if (data.length === 0) {
-        //     setModal('No Data')
-        //     return
-        // }
+        if (data.length === 0) {
+            setModal('No Data')
+            return
+        }
 
         if (distributorPDB !== null && distributorPDB !== undefined) {
             setModal(e)
@@ -93,7 +93,7 @@ function Home() {
         setState({ ...state, [i.uuid]: { ...state[i.uuid], uuid: i.uuid, [e.target.name]: e.target.value } })
     }
     async function save(i) {
-        console.log(state)
+        console.log(state[i.uuid])
         setModal('Guardando')
         await updateUserData('Producto', state[i.uuid], i.uuid)
         postImage[i.uuid] && await uploadStorage('Producto', postImage[i.uuid], i.uuid, updateUserData, true)

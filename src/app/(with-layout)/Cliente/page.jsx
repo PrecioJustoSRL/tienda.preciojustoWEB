@@ -107,7 +107,7 @@ function Home() {
                 <Button theme="MiniPrimaryComprar" click={() => storeHandler('Comprar')}>Comprar</Button>
             </div>}
 
-            {user.rol !== 'Distribuidor' && filterQR.length < 1 && <div>
+            {user.rol !== 'Distribuidor' && filterQR.length < 1 && webScann === false && <div>
                 <label htmlFor="qr" className='w-[90vw] relative mb-3 left-0 right-0 m-auto  max-w-[600px] lg:min-w-[600px] border-[5px] border-[#32CD32] flex justify-between items-center text-gray-950 text-[16px] h-[50px] bg-[#32CD32] rounded-full py-[5px] px-[10px] lg:px-[20px] z-20' >
                     <span className=''>
                         <svg width="32" height="32" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -143,9 +143,15 @@ function Home() {
             </div>}
             {webScann && <div className={`lg:hidden relative bg-white z-50`}>
                 <QRscanner></QRscanner>
+                <button type="button" className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-[14px] w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" onClick={() => setFilterQR('')}>
+                    <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" strokeLinecap="round" stroke-linejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                    <span className="sr-only">Close modal</span>
+                </button>
             </div>}
 
-            {filterQR.length > 0 && recetaDBP !== null && recetaDBP !== undefined && <div className='relative flex flex-col justify-between items-center left-0 right-0 mx-auto bg-white w-full p-5 max-w-[800px] my-5 z-20'>
+            {filterQR.length > 0  && <div className='relative flex flex-col justify-between items-center left-0 right-0 mx-auto bg-white w-full p-5 max-w-[800px] my-5 z-20'>
                 <h3 className='text-[14px] font-medium mb-4'>Receta Médica</h3>
 
                 <button type="button" className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-[14px] w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" onClick={() => setFilterQR('')}>
@@ -155,47 +161,45 @@ function Home() {
                     <span className="sr-only">Close modal</span>
                 </button>
 
-                {filterQR.length > 0 && recetaDBP !== null && recetaDBP !== undefined &&
-                    JSON.parse(recetaDBP[0].receta).sort(sortArray).map((i, index) =>
-                        <div key={index} className='w-full min-w-screen' onClick={() => searchQR(i['nombre de producto 1'])}><div className={`w-full text-[12px] px-5 py-2 rounded-full mr-2 bg-gray-100`} style={{ display: 'grid', gridTemplateColumns: 'auto 30px', }} onClick={() => handlerSearchFilter(i['nombre de producto 3'])}>
-                            <div className='pl-5 flex justify-between'>
-                                <span>{i['nombre de producto 1'] && i['nombre de producto 1']}</span>
-                                <span className='bg-[#1C355E] rounded-[5px] p-1 mx-5 text-white'>N° {i['cantidad']}</span>
-                            </div>
-                            {cart && cart[i.uuid] && i['nombre de producto 1'] === cart[i.uuid]['nombre de producto 1'] && i['cantidad'] === cart[i.uuid]['cantidad']
-                                ? <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="12.5" cy="12.5" r="12.5" fill="#32CD32" />
-                                    <path fill-rule="evenodd" clipRule="evenodd" d="M4 13.5L6.16667 11.3333L10.5 15.6667L19.1667 7L21.3333 9.16667L10.5 20L4 13.5Z" fill="white" />
-                                </svg>
-                                : <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="12.5" cy="12.5" r="12.5" fill="#9ca3af" />
-                                    <path fill-rule="evenodd" clipRule="evenodd" d="M4 13.5L6.16667 11.3333L10.5 15.6667L19.1667 7L21.3333 9.16667L10.5 20L4 13.5Z" fill="white" />
-                                </svg>}
+                { recetaDBP !== null && recetaDBP !== undefined && JSON.parse(recetaDBP[0].receta).sort(sortArray).map((i, index) =>
+                    <div key={index} className='w-full min-w-screen' onClick={() => searchQR(i['nombre de producto 1'])}><div className={`w-full text-[12px] px-5 py-2 rounded-full mr-2 bg-gray-100`} style={{ display: 'grid', gridTemplateColumns: 'auto 30px', }} onClick={() => handlerSearchFilter(i['nombre de producto 3'])}>
+                        <div className='pl-5 flex justify-between'>
+                            <span>{i['nombre de producto 1'] && i['nombre de producto 1']}</span>
+                            <span className='bg-[#1C355E] rounded-[5px] p-1 mx-5 text-white'>N° {i['cantidad']}</span>
                         </div>
-                            <br />
-
-                            <div className={` w-full flex flex-col items-center justify-center transition-all ${filter === i['nombre de producto 1'] ? '' : 'h-0 overflow-hidden'} col-span-2`}>
-                                {filter.length > 0 && productDB !== null && productDB !== undefined &&
-                                    productDB.sort(sortArray).map((i, index) => {
-                                        if (i.distribuidor !== 'Precio-Justo-SRL-Data') return tienda === 'Recetar' && i.distribuidor !== 'Precio-Justo-SRL-Data'
-                                            ? (i['nombre de producto 1'].toLowerCase().includes(filter.toLowerCase()) ||
-                                                (i['nombre de producto 2'] && i['nombre de producto 2'].toLowerCase().includes(filter.toLowerCase())) ||
-                                                (i['nombre de producto 3'] && i['nombre de producto 3'].toLowerCase().includes(filter.toLowerCase()))) && i.disponibilidad !== 'No disponible' &&
-                                            <CardM i={i} key={index} />
-                                            : (i['nombre de producto 1'].toLowerCase().includes(filter.toLowerCase()) ||
-                                                (i['nombre de producto 2'] && i['nombre de producto 2'].toLowerCase().includes(filter.toLowerCase())) ||
-                                                (i['nombre de producto 3'] && i['nombre de producto 3'].toLowerCase().includes(filter.toLowerCase()))) && i.disponibilidad !== 'No disponible' &&
-                                            <Card i={i} recetado={recetaDBP && JSON.parse(recetaDBP[0].receta).map((el) => el.uuid).includes(i.uuid)} detalle={recetaDBP && JSON.parse(recetaDBP[0].receta).find((el) => el.uuid === i.uuid)} key={index} />
-                                        // console.log(recetaDBP && JSON.parse(recetaDBP[0].receta).find((el) => el.uuid === i.uuid))
-                                    }
-                                    )}
-                            </div>
-                            <br />
-
+                        {cart && cart[i.uuid] && i['nombre de producto 1'] === cart[i.uuid]['nombre de producto 1'] && i['cantidad'] === cart[i.uuid]['cantidad']
+                            ? <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12.5" cy="12.5" r="12.5" fill="#32CD32" />
+                                <path fill-rule="evenodd" clipRule="evenodd" d="M4 13.5L6.16667 11.3333L10.5 15.6667L19.1667 7L21.3333 9.16667L10.5 20L4 13.5Z" fill="white" />
+                            </svg>
+                            : <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12.5" cy="12.5" r="12.5" fill="#9ca3af" />
+                                <path fill-rule="evenodd" clipRule="evenodd" d="M4 13.5L6.16667 11.3333L10.5 15.6667L19.1667 7L21.3333 9.16667L10.5 20L4 13.5Z" fill="white" />
+                            </svg>}
+                    </div>
+                        <br />
+                        <div className={` w-full flex flex-col items-center justify-center transition-all ${filter === i['nombre de producto 1'] ? '' : 'h-0 overflow-hidden'} col-span-2`}>
+                            {filter.length > 0 && productDB !== null && productDB !== undefined &&
+                                productDB.sort(sortArray).map((i, index) => {
+                                    if (i.distribuidor !== 'Precio-Justo-SRL-Data') return tienda === 'Recetar' && i.distribuidor !== 'Precio-Justo-SRL-Data'
+                                        ? (i['nombre de producto 1'].toLowerCase().includes(filter.toLowerCase()) ||
+                                            (i['nombre de producto 2'] && i['nombre de producto 2'].toLowerCase().includes(filter.toLowerCase())) ||
+                                            (i['nombre de producto 3'] && i['nombre de producto 3'].toLowerCase().includes(filter.toLowerCase()))) && i.disponibilidad !== 'No disponible' &&
+                                        <CardM i={i} key={index} />
+                                        : (i['nombre de producto 1'].toLowerCase().includes(filter.toLowerCase()) ||
+                                            (i['nombre de producto 2'] && i['nombre de producto 2'].toLowerCase().includes(filter.toLowerCase())) ||
+                                            (i['nombre de producto 3'] && i['nombre de producto 3'].toLowerCase().includes(filter.toLowerCase()))) && i.disponibilidad !== 'No disponible' &&
+                                        <Card i={i} recetado={recetaDBP && JSON.parse(recetaDBP[0].receta).map((el) => el.uuid).includes(i.uuid)} detalle={recetaDBP && JSON.parse(recetaDBP[0].receta).find((el) => el.uuid === i.uuid)} key={index} />
+                                    // console.log(recetaDBP && JSON.parse(recetaDBP[0].receta).find((el) => el.uuid === i.uuid))
+                                }
+                                )}
                         </div>
-                    )}
+                        <br />
+                    </div>
+                )}
                 <br />
-                <div className=' w-full lg:w-[50%] bg-[#1C355E] text-white text-center p-5 text-[14px] rounded-full z-20'>
+                { recetaDBP !== null && recetaDBP !== undefined 
+                  ?  <div className=' w-full lg:w-[50%] bg-[#1C355E] text-white text-center p-5 text-[14px] rounded-full z-20'>
                     Seleccione el producto <br />
                     de su preferencia, Vea que todos <br />
                     esten
@@ -205,10 +209,16 @@ function Home() {
                         </svg>
                     </span>  antes de Ir a pagar.
                 </div>
+                
+                : <div className=' w-full lg:w-[50%] bg-[#1C355E] text-white text-center p-5 text-[14px] rounded-full z-20'>
+                    El Qr no contiene ninguna receta
+                </div>
+                
+                }
             </div>}
 
             <div className="w-screen lg:w-auto relative z-10">
-                {filterQR.length < 1 && <div className={`relative  px-5  bg-white rounded-[20px]  mx-auto  left-0 right-0 w-[90vw] max-w-[600px]  lg:flex lg:flex-wrap lg:justify-around lg:z-0 border border-gray-200 transition-all ${filterNav ? ' h-[280px] lg:h-[250px]' : 'h-[45px] overflow-hidden'} ]`}>
+                {filterQR.length < 1 && webScann === false &&  <div className={`relative  px-5  bg-white rounded-[20px]  mx-auto  left-0 right-0 w-[90vw] max-w-[600px]  lg:flex lg:flex-wrap lg:justify-around lg:z-0 border border-gray-200 transition-all ${filterNav ? ' h-[280px] lg:h-[250px]' : 'h-[45px] overflow-hidden'} ]`}>
                     <h3 onClick={() => setFilterNav(!filterNav)} className='w-[100%] bg-white relative left-0 right-0 mx-auto relative  max-w-[600px] lg:min-w-[600px] flex justify-center items-center text-[16px] h-[45px] rounded-full py-[5px] px-[0px] cursor-pointer'>Filtrar Productos <span className={filterNav ? ' ml-5 rotate-[270deg]' : ' ml-5 rotate-90'}>{'>'}</span></h3>
 
                     <div className='lg:w-[250px]'>
@@ -226,9 +236,9 @@ function Home() {
                             <Tag theme={categoria == 'Otros' ? 'Primary' : 'Secondary'} click={() => setCategoria(categoria == 'Otros' ? '' : 'Otros')}>Otros</Tag>
                         </div>
                     </div>
-                    <Button theme="Primary" click={()=>setFilterNav(false)}>Filtrar</Button>
+                    <Button theme="Primary" click={() => setFilterNav(false)}>Filtrar</Button>
                 </div>}
-                 
+
                 <div className="relative bg-transparent lg:bg-transparent mt-6  rounded-t-[50px]  w-full flex flex-col items-center justify-center px-5 pt-8 pb-16 lg:pt-0">
                     {filter.length == 0 && filterQR.length == 0 &&
                         productDB !== null && productDB !== undefined &&
