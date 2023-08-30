@@ -146,7 +146,7 @@ setQr(null)
             includeMargin={true}
             renderAs={'canvas'}
             viewBox={`0 0 256 256`}
-            imageSettings={{src: '/logo-circle.png', height: 100, width: 100, escavate: true}}
+            imageSettings={{src: '/logo-circle.png', height: 100, width: 100, escavate: false}}
           />}
         </div>
 
