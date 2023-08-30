@@ -9,9 +9,9 @@ function Button({ click, children, name }) {
     const pathname = usePathname()
     const query = pathname.split('/').pop().toString()
     return <button type="button" className={`relative flex flex-col items-center justify-between p-2.5 group text-white `} onClick={click}>
-            {children}
-            <span className={`absolute h-[5px] bottom-0 ${name == query && introClientVideo == false && 'bg-gray-50 absolute w-full h-[5px] bottom-0'} ${name == 'video' && introClientVideo && 'bg-gray-50 absolute w-full h-[5px] bottom-0'}`}></span>
-     
+        {children}
+        <span className={`absolute h-[5px] bottom-0 ${name == query && introClientVideo == false && 'bg-gray-50 absolute w-full h-[5px] bottom-0'} ${name == 'video' && introClientVideo && 'bg-gray-50 absolute w-full h-[5px] bottom-0'}`}></span>
+
     </button>
 }
 
@@ -188,7 +188,7 @@ export default function BottomNavigation({ rol }) {
 
                 <Button click={() => redirectHandler(null, 'video')} name={'video'}>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15.4531 2.72656L12.7266 0H10.4531L13.1797 2.72656H15.4531ZM0.910156 0H0V2.72656H3.63672L0.910156 0ZM9.54687 2.72656L6.81641 0H4.54297L7.26953 2.72656H9.54687ZM16.3633 6.36328H12.7266L15.4531 3.63672H13.1797L10.4531 6.36328H6.81641L9.54297 3.63672H7.26953L4.54297 6.36328H0.910156L3.63672 3.63672H0V18.1836C0 19.1836 0.816406 20 1.81641 20H18.1797C19.1836 20 19.9961 19.1836 19.9961 18.1836V3.63672H19.0859L16.3633 6.36328ZM7.27344 17.2734V9.08984L14.5469 13.1797L7.27344 17.2734ZM16.3633 0L19.0898 2.72656H20V0H16.3633Z" fill="white" />
+                        <path d="M18.5438 3.27188L15.2719 0H12.5438L15.8156 3.27188H18.5438ZM1.09219 0H0V3.27188H4.36406L1.09219 0ZM11.4562 3.27188L8.17969 0H5.45156L8.72344 3.27188H11.4562ZM19.6359 7.63594H15.2719L18.5438 4.36406H15.8156L12.5438 7.63594H8.17969L11.4516 4.36406H8.72344L5.45156 7.63594H1.09219L4.36406 4.36406H0V21.8203C0 23.0203 0.979687 24 2.17969 24H21.8156C23.0203 24 23.9953 23.0203 23.9953 21.8203V4.36406H22.9031L19.6359 7.63594ZM8.72812 20.7281V10.9078L17.4562 15.8156L8.72812 20.7281ZM19.6359 0L22.9078 3.27188H24V0H19.6359Z" fill="white" />
                     </svg>
                     <span className="text-[12px] text-white   ">Video</span>
                 </Button>
