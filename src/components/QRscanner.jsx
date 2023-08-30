@@ -2,13 +2,15 @@
 
 import { QrScanner } from '@yudiel/react-qr-scanner';
 import { useUser } from '@/context/Context.js'
+import { readUserData } from '@/supabase/utils'
 
 const Component = () => {
-  const { user, userDB, cart, modal, setModal, productDB, setUserProduct, setUserItem, item, filter, setFilter, filterQR, setTienda, setFilterQR, recetaDBP, setRecetaDBP, tienda, setIntroClientVideo, search, setSearch, distributorPDB, setUserDistributorPDB, webScann, setWebScann } = useUser()
+  const { setRecetaDBP, setWebScann, setFilter, setFilterQR} = useUser()
 
-  const handlerQR = (result) => {
+  const handlerQR = async (result) => {
     if (result) {
       console.log(result)
+      const data = await readUserData('Receta', result, setRecetaDBP, 'qr')
       setFilterQR(result)
       setWebScann(false)
     }
