@@ -143,9 +143,10 @@ setQr(null)
             style={{ height: "auto", maxWidth: "100%", width: "100%", border: '10px', backgroundColor: 'white' }}
             value={qr}
             level={'H'}
-            includeMargin={false}
+            includeMargin={true}
             renderAs={'canvas'}
             viewBox={`0 0 256 256`}
+            imageSettings={{src: '/logo-circle.png', height: 100, width: 100, escavate: true}}
           />}
         </div>
 
