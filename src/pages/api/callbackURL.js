@@ -65,6 +65,13 @@ export default async function handler(req, res) {
             res.setHeader('Content-Type', 'application/json')
             return res.json(resData)
         }
+    } else {
+        const resData = {
+            Message: "Error: Method ",
+         
+        }
+        res.setHeader('Content-Type', 'application/json')
+        return res.json(resData)
     }
 
 }

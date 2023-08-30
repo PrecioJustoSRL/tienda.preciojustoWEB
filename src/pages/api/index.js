@@ -46,15 +46,12 @@ export default function handler(req, res) {
 
 
 
-  // console.log(response);
-            //         const myContent = `
-            //     <br/>
-            //     <img src="data:image/png;base64,${response.data.data.qrImage}">
-            //     <br/>
-            // `;
-            // fs.writeFileSync('./index.html', myContent);
 
-            // response.data.data.qrImage
+
+
+
+
+
 
 
 // export default function handler(req, res) {
