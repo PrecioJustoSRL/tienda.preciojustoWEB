@@ -19,7 +19,7 @@ import Whatsapp from '@/components/Whatsapp'
 
 function Home({ children }) {
   const router = useRouter()
-  const { user, userDB, setUserProfile, setUserCart, setUserProduct, setRecetaDB, distributorPDB, setUserDistributorPDB, whatsapp, setWhatsapp, setUserData, filter, setFilter, nav, setNav, modal, setModal, cart, introClientVideo, setIntroClientVideo, recetaDBP, setRecetaDBP, productDB, search, setSearch, videoClientRef, setFilterQR } = useUser()
+  const { user, userDB, setUserProfile, setUserCart, setUserProduct, setRecetaDB, distributorPDB, setUserDistributorPDB, whatsapp, setWhatsapp, setUserData, filter, setFilter, nav, setNav, modal, setModal, cart, introClientVideo, setIntroClientVideo, recetaDBP, setRecetaDBP, productDB, search, setSearch, videoClientRef, setFilterQR, webScann, setWebScann, } = useUser()
   const pathname = usePathname()
 
   const redirectHandler = (ref) => {
@@ -105,6 +105,7 @@ function Home({ children }) {
       {introClientVideo && <div className='fixed top-0 left-0 w-screen h-screen bg-[#ffffff00] z-40' onClick={handlerClientVideo}></div>}
       {whatsapp && <div className='fixed top-0 left-0 w-screen h-screen bg-[#ffffff00] z-40' onClick={handlerWhatsapp}></div>}
       {search && <div className='fixed top-0 left-0 w-screen h-screen bg-[#ffffff00] z-40' onClick={() => setSearch(false)}></div>}
+      {webScann && <div className='fixed top-0 left-0 w-screen h-screen bg-[#ffffff00] z-40' onClick={() => setWebScann(false)}></div>}
 
       <main className={`relative min-w-screen  lg:pb-0  lg:min-w-auto my-[0px]  lg:bg-blue-50 lg:min-h-screen  ${nav ? 'w-screen pl-[220px] lg:pl-[280px] ' : '  lg:px-[0px]'}`} onClick={() => setNav(false)} style={{ transition: 'all 0.5' }}>
         {/* <img src="/bg.png" className='fixed bottom-[60px] lg:bottom-0 right-[20px] w-[60vw] lg:w-[40vw]' alt="" /> */}
@@ -144,12 +145,6 @@ function Home({ children }) {
           {user && user !== undefined && user.rol !== 'Distribuidor' && pathname === '/Cliente' && <Cart />}
         </nav>
 
-
-
-
-
-
-
         {search
           && filter.length > 0
           && distributorPDB !== null
@@ -167,16 +162,6 @@ function Home({ children }) {
               <div className='pl-5'>{i['nombre de producto 1'] && i['nombre de producto 1']}</div>
             </div>)}
           </div>}
-
-
-
-
-
-
-
-
-
-
 
         <div className="lg:px-[50px] pt-[85px] pb-[65px] md:pt-[85px] md:pb-5 h-screen overflow-y-auto">
           <VideoClient />
