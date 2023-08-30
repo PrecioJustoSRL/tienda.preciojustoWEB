@@ -56,7 +56,7 @@ const passwordRedirect = async (email) => {
 //--------------------------CRUD----------------------------------
 
 const writeUserData = async (rute, object, uuid, context, updateContext, setUserSuccess, msg, key) => {
-    console.log(object)
+    // console.log(object)
 
     const result = await supabase
         .from(rute)

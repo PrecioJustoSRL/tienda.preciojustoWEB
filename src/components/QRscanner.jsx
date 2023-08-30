@@ -8,6 +8,7 @@ const Component = () => {
 
   const handlerQR = (result) => {
     if (result) {
+      console.log(result)
       setFilterQR(result)
       setWebScann(false)
     }
@@ -15,9 +16,9 @@ const Component = () => {
 
   return (
     <QrScanner
-      constraints={{
-        facingMode: 'environment'
-      }}
+      // constraints={{
+      //   facingMode: 'environment'
+      // }}
       onDecode={(result) => handlerQR(result)}
       onError={(error) => console.log(error?.message)}
     />
