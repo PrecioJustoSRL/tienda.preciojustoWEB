@@ -19,7 +19,7 @@ import Whatsapp from '@/components/Whatsapp'
 
 function Home({ children }) {
   const router = useRouter()
-  const { user, userDB, setUserProfile, setUserCart, setUserProduct, setRecetaDB, distributorPDB, setUserDistributorPDB, whatsapp, setWhatsapp, setUserData, filter, setFilter, nav, setNav, modal, setModal, cart, introClientVideo, setIntroClientVideo, recetaDBP, setRecetaDBP, productDB, search, setSearch, videoClientRef, setFilterQR, webScann, setWebScann, } = useUser()
+  const { user, userDB, setUserProfile, setUserCart,businessData, setUserProduct, setRecetaDB, distributorPDB, setUserDistributorPDB, whatsapp, setWhatsapp, setUserData, filter, setFilter, nav, setNav, modal, setModal, cart, introClientVideo, setIntroClientVideo, recetaDBP, setRecetaDBP, productDB, search, setSearch, videoClientRef, setFilterQR, webScann, setWebScann, } = useUser()
   const pathname = usePathname()
 
   const redirectHandler = (ref) => {
@@ -76,10 +76,14 @@ function Home({ children }) {
     setWhatsapp(false)
   }
 
-
+  const soporte = () => {
+    businessData && window.open(`https://api.whatsapp.com/send?phone=${businessData[0].whatsapp.replaceAll(' ', '')}&text=hola%20necesito%20un%20implante%20de%20osteosintesis%20y%20mi%20cuenta%20esta%20bloqueada%20¿Pueden%20ayudarme?%20`, '_blank')
+    setNav(false)
+    // setWhatsapp(!whatsapp)
+  }
   useEffect(() => {
     readUserData('Producto', 'Precio-Justo-SRL-Data', setUserDistributorPDB, 'distribuidor')
-    user && user.bloqueado === true && setModal(Bloqueado)
+    // user && user.bloqueado === true && setModal('Bloqueado')
     readUserAllData('Producto', productDB, setUserProduct)
     // readUserAllData('Receta', recetaDBP, setRecetaDBP)
   }, [user]);
@@ -88,8 +92,12 @@ function Home({ children }) {
   return (
     // <div className="pt-[65px] pb-[65px] min-h-screen bg-gray-white"  style={{ backgroundImage: `url(bg.png)`, backgroundAttachment: 'fixed', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'bottom' }}>
     <div className="h-screen bg-gray-white">
-      {modal == 'Bloqueado' && <Modal funcion={signOutConfirm}>
+      {user && user.bloqueado === true && <Modal funcion={soporte} alert={true}>
         Esta cuenta ha sido bloqueada, <br /> contactese con el operador
+        <br /><br />
+        <button type="button" onClick={soporte} className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg  inline-flex items-center px-5 py-4 text-center">
+          Contactar
+        </button>
       </Modal>}
       {modal == 'SignOut' && <Modal funcion={signOutConfirm}>
         Estas seguro de salir...? <br /> {Object.keys(cart).length > 0 && 'Tus compras no han sido efectuadas'}
