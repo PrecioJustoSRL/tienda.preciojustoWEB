@@ -46,7 +46,7 @@ function Home() {
         await data.map(async i => {
             const obj = { ...i }
             delete obj.id
-            return await writeUserData('Producto', { ...obj, uuid: generateUUID(), distribuidor: user.uuid, ciudad: user.ciudad }, user.uuid, userDB, setUserData, setUserSuccess, 'Se ha guardado correctamente', 'Perfil')
+             await writeUserData('Producto', { ...obj, uuid: generateUUID(), distribuidor: user.uuid, ciudad: user.ciudad }, user.uuid, userDB, setUserData, setUserSuccess, 'Se ha guardado correctamente', 'Perfil')
         })
         setUserDistributorPDB(undefined)
         await readUserData('Producto', user.uuid, setUserDistributorPDB, 'distribuidor')
@@ -130,7 +130,7 @@ function Home() {
     useEffect(() => {
         readUserData('Producto', user.uuid, setUserDistributorPDB, 'distribuidor')
     }, [])
-
+console.log(distributorPDB)
     return (
         <div className='h-full'>
 

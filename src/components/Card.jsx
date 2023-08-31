@@ -67,7 +67,7 @@ export default function Card({ nombre1, nombre2, nombre3, costo, url, empresa, d
                 {i['nombre de producto 2'] && <div className=" font-regular text-[14px]  text-white">
                     {i['nombre de producto 2']}
                 </div>}
-                {i['nombre de producto 2'] && <div className=" font-regular text-[14çpx] text-white">
+                {i['nombre de producto 3'] && <div className=" font-regular text-[14px] text-white">
                     {i['nombre de producto 3']}
                 </div>}
             </div>

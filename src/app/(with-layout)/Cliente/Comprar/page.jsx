@@ -117,7 +117,7 @@ function Comprar({ theme, styled, click, children }) {
     {success == 'Complete' && <Msg>Complete el formulario</Msg>}
     <InvoicePDF />
     <form >
-      <h3 className='text-center text-[16px] pb-3'>DATOS DEL PACIENTE</h3>
+      <Subtitle>DATOS DEL PACIENTE</Subtitle>
       <div className="grid gap-6 mb-6 md:grid-cols-2">
         <div>
           <Label htmlFor="">NOMBRE DEL PACIENTE</Label>
@@ -138,7 +138,7 @@ function Comprar({ theme, styled, click, children }) {
               <div className="flex  mt-[2px] h-5 mr-5">
                 <input id="remember" type="radio" value="" checked={check == false ? true : false} onClick={() => handlerCheck(false)} className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required />
               </div>
-              <label htmlFor="remember" className="ml-2 text-[14px] font-medium " onClick={() => handlerCheck(false)}>Para la ciudad</label>
+              <label htmlFor="remember" className="ml-2 text-[16px] " onClick={() => handlerCheck(false)}>Para la ciudad</label>
             </div>
           </div>
 
@@ -147,7 +147,7 @@ function Comprar({ theme, styled, click, children }) {
               <div className="flex  mt-[2px] h-5 mr-5">
                 <input id="remember1" type="radio" value="" checked={check == true ? true : false} onClick={() => handlerCheck(true)} className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required />
               </div>
-              <label htmlFor="remember1" className="ml-2 text-[14px] font-medium " onClick={() => handlerCheck(true)} >Para provincia (+350bs)</label>
+              <label htmlFor="remember1" className="ml-2 text-[16px] " onClick={() => handlerCheck(true)} >Para provincia (+350bs)</label>
             </div>
           </div>
         </div>

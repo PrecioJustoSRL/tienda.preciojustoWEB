@@ -20,7 +20,7 @@ export default function Button({ theme, styled, click, children }) {
         case 'Primary':
             return <button
                 type="submit"
-                className="text-white bg-[#2a52BE] border border-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-[16px] w-full px-2 py-3 text-center z-20"
+                className="text-white bg-[#2a52BE] text-[16px] border border-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-[16px] w-full px-2 py-3 text-center z-20"
                 // className="text-white bg-violet-700 hover:bg-violet-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center 
                 // dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 onClick={click}
@@ -124,7 +124,7 @@ export default function Button({ theme, styled, click, children }) {
         case 'MiniPrimaryComprar':
             return <button
                 type="submit"
-                className="relative text-white bg-[#2A52BE] border border-gray-100  focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-full text-[16px] w-full px-6 py-3  text-center font-medium z-20"
+                className="relative text-white bg-[#2A52BE] border border-gray-100  focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-full text-[16px] w-full px-6 py-3  text-center font-bold z-20"
                 // className="text-white bg-violet-700 hover:bg-violet-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center 
                 // dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 onClick={click}
@@ -176,7 +176,7 @@ export default function Button({ theme, styled, click, children }) {
         case 'MiniSuccessRecetar':
             return <button
                 type="submit"
-                className="text-gray-950 bg-[#32CD32] flex items-center justify-center focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-[16px] w-full px-6 py-3  text-center z-20"
+                className="text-gray-950 bg-[#32CD32] flex items-center justify-center focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-full text-[16px] w-full px-6 py-3  text-center z-20"
                 // className="text-white bg-violet-700 hover:bg-violet-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center 
                 // dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 onClick={click}

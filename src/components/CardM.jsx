@@ -60,7 +60,7 @@ export default function Card({  i, recetado, detalle}) {
                 {i['nombre de producto 2'] && <div className=" font-regular text-[14px]  text-gray-950">
                     {i['nombre de producto 2']}
                 </div>}
-                {i['nombre de producto 2'] && <div className=" font-regular text-[14çpx] text-gray-950">
+                {i['nombre de producto 3'] && <div className=" font-regular text-[14px] text-gray-950">
                     {i['nombre de producto 3']}
                 </div>}
             </div>

@@ -2,6 +2,6 @@
 
 export default function Button({ styled, children }) {
     return (
-        <h3 className={`w-full font-medium text-[16px] py-5 ${styled}`}>{children}</h3>
+        <h3 className={`w-full font-bold text-[16px] text-center py-5 ${styled}`}>{children}</h3>
     )
 }
