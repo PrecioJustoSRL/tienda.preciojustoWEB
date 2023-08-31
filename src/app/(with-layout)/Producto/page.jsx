@@ -58,7 +58,20 @@ function Home() {
     }
     console.log(item)
     return (
-        item !== undefined ? <main className="relative left-0 right-0 mx-auto p-5 mt-12 max-w-[900px] flex flex-col items-center lg:flex-row lg:justify-between lg:items-center pt-[20px] pb-[20px] bg-white rounded-[5px]">
+        item !== undefined ? <main className="relative left-0 right-0 mx-auto px-5 max-w-[900px] flex flex-col items-center lg:flex-row lg:justify-between lg:items-center pt-[20px] pb-[20px] bg-white rounded-[5px]">
+
+            <div className='bg-[#2a52BE] w-full p-5 '>
+                <div className=" font-bold text-[16px] mb-2 text-white">
+                    {item['nombre de producto 1']}
+                </div>
+                <div className=" text-[14px] mb-2 text-white">
+                    {item['nombre de producto 2']}
+                </div>
+                <div className="  text-[14px] mb-2 text-white">
+                    {item['nombre de producto 3']}
+                </div>
+            </div>
+
             <div className='flex flex-wrap justify-center lg:justify-start md:max-w-[400px] '>
                 <img src={item.url} className='lg:w-[90vw] lg:max-w-[400px] max-h-[200px] lg:max-h-[10000px] lg:px-10' alt="" />
                 <div className='w-full flex justify-end  items-center p-5 lg:px-10'>
@@ -69,31 +82,26 @@ function Home() {
                 </div>
             </div>
             <br />
-            <div className='lg:pl-12 lg:border-l bg-gray-50 p-5 lg:bg-white lg:p-0'>
-                <div className=" font-bold text-[16px] mb-2 text-gray-950">
-                    {item['nombre de producto 1']}
-                </div>
-                <div className=" font-bold text-[16px] mb-2 text-gray-950">
-                    {item['nombre de producto 2']}
-                </div>
-                <div className=" font-bold text-[16px] mb-2 text-gray-950">
-                    {item['nombre de producto 3']}
-                </div>
-                <Subtitle>Descripción basica</Subtitle>
-                <p className={style.paragraph}>{item['descripcion basica']}</p>
+
+
+
+            <div className='lg:pl-12 lg:border-l bg-gray-100 p-5 lg:bg-white lg:p-0'>
+
+                <Subtitle styled='text-left'>Descripción basica</Subtitle>
+                <p className='text-[14px]'>{item['descripcion basica']}</p>
                 <br />
-                <Subtitle>Descripción tecnica</Subtitle>
-                <p className={style.paragraph}>{item['descripcion tecnica']}</p>
+                <Subtitle styled='text-left'>Descripción tecnica</Subtitle>
+                <p className='text-[14px]'>{item['descripcion tecnica']}</p>
                 <br />
-                <Subtitle>Uso frecuente</Subtitle>
-                <p className={style.paragraph}>{item['uso frecuente']}</p>
+                <Subtitle styled='text-left'>Uso frecuente</Subtitle>
+                <p className='text-[14px]'>{item['uso frecuente']}</p>
                 <br />
                 <Subtitle>Cantidad</Subtitle>
-                <div className='relative flex w-full justify-between items-center pr-4'>
+                <div className='relative flex w-full justify-center items-center'>
                     {cart && cart[item.uuid] && cart[item.uuid].cantidad !== undefined && cart[item.uuid].cantidad !== 0
-                        ? <div className='flex w-[150px]'>
+                        ? <div className='flex w-[150px] justify-center'>
                             <Button theme='MiniPrimary' click={(e) => addLessCart(e, item)}>-</Button>
-                            {cart && cart[item.uuid] && cart[item.uuid].cantidad !== undefined && cart[item.uuid].cantidad !== 0   && <span className='flex justify-center items-center text-[16px] text-right px-5 w-[40px] font-bold'> {cart[item.uuid].cantidad} </span>}
+                            {cart && cart[item.uuid] && cart[item.uuid].cantidad !== undefined && cart[item.uuid].cantidad !== 0 && <span className='flex justify-center items-center text-[16px] text-right px-5 w-[40px] font-bold'> {cart[item.uuid].cantidad} </span>}
                             <Button theme='MiniSecondary' click={(e) => addPlussCart(e, item)}>+</Button>
                         </div>
                         : <Button theme='MiniPrimaryComprar' click={(e) => addCart(e, item)}>Comprar</Button>
