@@ -100,13 +100,13 @@ function Home() {
                         </div>
                     </div>
                     <Subtitle styled='text-left'>Descripción basica</Subtitle>
-                    <p className='text-[14px]'>{item['descripcion basica']}</p>
+                    <p className='text-[14px] text-center'>{item['descripcion basica']}</p>
                     <br />
                     <Subtitle styled='text-left'>Descripción tecnica</Subtitle>
-                    <p className='text-[14px]'>{item['descripcion tecnica']}</p>
+                    <p className='text-[14px] text-center'>{item['descripcion tecnica']}</p>
                     <br />
                     <Subtitle styled='text-left'>Uso frecuente</Subtitle>
-                    <p className='text-[14px]'>{item['uso frecuente']}</p>
+                    <p className='text-[14px] text-center'>{item['uso frecuente']}</p>
                     <br />
                     <Subtitle>Cantidad</Subtitle>
                     <div className='relative flex w-full justify-center items-center'>
