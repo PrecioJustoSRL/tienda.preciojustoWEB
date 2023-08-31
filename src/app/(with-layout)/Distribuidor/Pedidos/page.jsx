@@ -71,7 +71,7 @@ function Home() {
     return (
 
         <div className="relative overflow-x-auto shadow-md">
-            <table className=" min-w-[1200px] lg:w-full lg:min-w-[1000px] text-[12px] text-left text-gray-500">
+            <table className=" min-w-[1500px] lg:w-full lg:min-w-[1000px] text-[12px] text-left text-gray-500">
                 <thead className="text-[12px] text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col-3" className="px-3 py-3">
@@ -101,6 +101,12 @@ function Home() {
                         <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                             Debito
                         </td>
+                        <th scope="col-3" className="px-3 py-3">
+                            Celular
+                        </th>
+                        <th scope="col-3" className="px-3 py-3">
+                            Correo
+                        </th>
                         <th scope="col" className="px-3 py-3">
                             Eliminar
                         </th>
@@ -136,6 +142,12 @@ function Home() {
                             </td>
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 {i['message'] === 'Correcto' ? 'Sin deuda' : 'Sin cancelar'}
+                            </td>
+                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                                {i['celular del paciente']}
+                            </td>
+                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
+                                {i['correo'] === 'Correcto' ? 'Sin deuda' : 'Sin cancelar'}
                             </td>
                             <td className="px-3 py-4">
                                 {state[i.uuid]

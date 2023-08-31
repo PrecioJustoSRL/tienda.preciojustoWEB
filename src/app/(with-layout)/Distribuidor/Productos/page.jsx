@@ -64,10 +64,10 @@ function Home() {
 
         const data = await readUserData('Producto', queryUuid, null, 'distribuidor')
 
-        if (data.length === 0) {
-            setModal('No Data')
-            return
-        }
+        // if (data.length === 0) {
+        //     setModal('No Data')
+        //     return
+        // }
 
         if (distributorPDB !== null && distributorPDB !== undefined) {
             setModal(e)
