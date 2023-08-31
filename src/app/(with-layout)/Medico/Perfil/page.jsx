@@ -17,7 +17,7 @@ function Home() {
         router.push(ref)
     }
 
-    console.log(userDB)
+    console.log(user)
     useEffect(() => {
         if (user && user.rol !== undefined) readUserData(user.rol, user.uuid, setUserData,)
     }, [user]);
@@ -31,7 +31,7 @@ function Home() {
                     </div>
                     <br />
                     <h3 className='w-full text-[14px] text-center '>{userDB[0]['nombre'].toUpperCase()}</h3>
-                    <br />
+    
                     <h3 className='w-full text-[14px] text-center '>{userDB[0]['especialidad']}</h3>
                     <br />
                     <Subtitle>Contactos</Subtitle>

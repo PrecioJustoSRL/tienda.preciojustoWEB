@@ -93,10 +93,10 @@ function Home() {
     }
 
 
-    function sortArray (x,y) {
-        if(x['nombre'].toLowerCase() < y['nombre'].toLowerCase()  ) {return -1}
-        if(x['nombre'].toLowerCase() > y['nombre'].toLowerCase()) {return 1}
-        return 0  
+    function sortArray(x, y) {
+        if (x['nombre'].toLowerCase() < y['nombre'].toLowerCase()) { return -1 }
+        if (x['nombre'].toLowerCase() > y['nombre'].toLowerCase()) { return 1 }
+        return 0
     }
     console.log(item)
     useEffect(() => {
@@ -112,10 +112,10 @@ function Home() {
             <h3 className='font-medium text-[16px]'>Clinicas</h3>
             <br />
             <div className='flex justify-center w-full'>
-                <input type="text" className='border-b border-gray-300 gap-4 text-center focus:outline-none  w-[300px]' onChange={onChangeHandler} placeholder='Filtrar por nombre' />
+                <input type="text" className='border-b border-gray-300 gap-4 text-center focus:outline-none  w-[300px]' onChange={onChangeHandler} placeholder='Filtrar por nombre o correo' />
             </div>
 
-            <div className=' flex justify-start items-center my-5 '>
+            {/* <div className=' flex justify-start items-center my-5 '>
                 <h3 className="flex pr-12 text-[14px]" htmlFor="">Ciudad</h3>
                 <div className="gap-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 120px)' }}>
                     <Tag theme={rol == 'Cliente' ? 'Primary' : 'Secondary'} click={() => setRol(rol == 'Cliente' ? '' : 'Cliente')}>Cliente</Tag>
@@ -124,12 +124,12 @@ function Home() {
                     <Tag theme={rol == 'Distribuidor' ? 'Primary' : 'Secondary'} click={() => setRol(rol == 'Distribuidor' ? '' : 'Distribuidor')}>Distribuidor</Tag>
                     <Tag theme={rol == 'Administrador' ? 'Primary' : 'Secondary'} click={() => setRol(rol == 'Administrador' ? '' : 'Administrador')}>Administrador</Tag>
                 </div>
-            </div>
+            </div> */}
             <div className=' flex justify-start items-center my-5 '>
                 <h3 className="flex pr-12 text-[14px]" htmlFor="">Ciudad</h3>
                 <div className="gap-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 100px) 100px 100px' }}>
-                    <Tag theme={ciudad == 'Sucre' ? 'Primary' : 'Secondary'} click={() => setCiudad(ciudad == 'Sucre' ? '' : 'Sucre')}>Sucre</Tag>
-                    <Tag theme={ciudad == 'La paz' ? 'Primary' : 'Secondary'} click={() => setCiudad(ciudad == 'La paz' ? '' : 'La paz')}>La paz</Tag>
+                    <Tag theme={ciudad == 'Chuquisaca' ? 'Primary' : 'Secondary'} click={() => setCiudad(ciudad == 'Chuquisaca' ? '' : 'Chuquisaca')}>Chuquisaca</Tag>
+                    <Tag theme={ciudad == 'La Paz' ? 'Primary' : 'Secondary'} click={() => setCiudad(ciudad == 'La Paz' ? '' : 'La Paz')}>La Paz</Tag>
                     <Tag theme={ciudad == 'Cochabamba' ? 'Primary' : 'Secondary'} click={() => setCiudad(ciudad == 'Cochabamba' ? '' : 'Cochabamba')}>Cochabamba</Tag>
                     <Tag theme={ciudad == 'Santa Cruz' ? 'Primary' : 'Secondary'} click={() => setCiudad(ciudad == 'Santa Cruz' ? '' : 'Santa Cruz')}>Santa Cruz</Tag>
                     <Tag theme={ciudad == 'Oruro' ? 'Primary' : 'Secondary'} click={() => setCiudad(ciudad == 'Oruro' ? '' : 'Oruro')}>Oruro</Tag>
@@ -143,23 +143,18 @@ function Home() {
                 <thead className="text-[12px] text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" className="px-3 py-3">
-                            #             
-                        </th>                                 
+                            #
+                        </th>
                         <th scope="col" className="px-3 py-3">
                             Nombre
                         </th>
                         <th scope="col" className="px-3 py-3">
                             Ciudad
                         </th>
-                        <th scope="col" className="px-8 py-3">
-                            Celular
-                        </th>
                         <th scope="col" className="px-3 py-3">
                             Correo
                         </th>
-                        <th scope="col" className="px-3 py-3">
-                            Rol
-                        </th>
+                 
                         <th scope="col" className="px-3 py-3">
                             Blockear
                         </th>
@@ -171,7 +166,7 @@ function Home() {
                 <tbody>
                     {temporal && temporal !== undefined && temporal.sort(sortArray).map((i, index) => {
 
-                        return i.rol && i.rol.includes(rol) && i.ciudad.includes(ciudad) && i.nombre.toLowerCase().includes(filter) && <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={index}>
+                        return i.rol && i.rol.includes('Cliente') && i.ciudad.includes(ciudad) && (i.nombre.toLowerCase().includes(filter) || i.correo.toLowerCase().includes(filter)) && <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={index}>
                             <td className="px-3 py-4  flex font-semibold text-gray-900 dark:text-white">
                                 <span className='h-full flex py-2'>{index + 1}</span>
                             </td>
@@ -185,31 +180,24 @@ function Home() {
                             </td>
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 {/* <textarea id="message" rows="6" onChange={(e) => onChangeHandler(e, i)} name='costo' cols="4" defaultValue={i['costo']} className="block p-1.5 h-full text-sm text-gray-900 bg-white rounded-lg  focus:ring-gray-100 focus:border-gray-100 focus:outline-none resize-x-none" placeholder="Write your thoughts here..."></textarea> */}
-                                {/* {i['telefono']} */}
-                            </td>
-                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
-                                {/* <textarea id="message" rows="6" onChange={(e) => onChangeHandler(e, i)} name='costo' cols="4" defaultValue={i['costo']} className="block p-1.5 h-full text-sm text-gray-900 bg-white rounded-lg  focus:ring-gray-100 focus:border-gray-100 focus:outline-none resize-x-none" placeholder="Write your thoughts here..."></textarea> */}
                                 {i['correo']}
                             </td>
-                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
-                                {/* <textarea id="message" rows="6" onChange={(e) => onChangeHandler(e, i)} cols="6" name='nombre de producto 3' defaultValue={i['nombre de producto 3']} className="block p-1.5  w-full h-full text-sm text-gray-900 bg-white rounded-lg  focus:ring-gray-100 focus:border-gray-100 focus:outline-none resize-x-none" placeholder="Write your thoughts here..."></textarea> */}
-                                {i['rol']}
-                            </td>
-                           {i['rol'] === 'Administrador' ? <><td className="px-3 py-4">
+                           
+                            {i['rol'] === 'Administrador' ? <><td className="px-3 py-4">
                                 No permitido
                             </td>
-                            <td className="px-3 py-4">
-                            No permitido
-                            </td> </>
-                            :<><td className="px-3 py-4">
-                            {i.bloqueado == true
-                                ? <Button theme={"Success"} click={() => delet(i, 'Block')}>Desbloquear</Button>
-                                : <Button theme={"Secondary"} click={() => delet(i, 'Block')}>Bloquear</Button>
-                            }
-                        </td>
-                        <td className="px-3 py-4">
-                            <Button theme={"Danger"} click={() => delet(i, 'Delete')}>Eliminar</Button>
-                        </td> </>
+                                <td className="px-3 py-4">
+                                    No permitido
+                                </td> </>
+                                : <><td className="px-3 py-4">
+                                    {i.bloqueado == true
+                                        ? <Button theme={"Success"} click={() => delet(i, 'Block')}>Desbloquear</Button>
+                                        : <Button theme={"Secondary"} click={() => delet(i, 'Block')}>Bloquear</Button>
+                                    }
+                                </td>
+                                    <td className="px-3 py-4">
+                                        <Button theme={"Danger"} click={() => delet(i, 'Delete')}>Eliminar</Button>
+                                    </td> </>
                             }
                         </tr>
                     })
@@ -233,7 +221,7 @@ export default WithAuth(Home)
         // console.log({ bloqueado: !item.bloqueado })
         // await updateUserData('Producto', { bloqueado: !item.bloqueado }, item.uuid, eq)
         // readUserData('Producto', userUuid, distributorPDB, setUserDistributorPDB, null, null, 'distribuidor', true)
-        // updateUserData = async (rute, object, uuid, eq) 
+        // updateUserData = async (rute, object, uuid, eq)
         // postImage[userUuid] && uploadStorage('Producto', postImage[userUuid], userUuid, updateUserData, true)
         // const obj = { ...state }
         // delete obj[userUuid]

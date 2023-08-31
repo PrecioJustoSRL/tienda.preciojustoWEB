@@ -65,6 +65,10 @@ function Home() {
         setUserUuid(id)
         return router.push('Administrador/Distribuidores/Productos')
     }
+    function redirectPedidos(id) {
+        setUserUuid(id)
+        return router.push('Administrador/Distribuidores/Pedidos')
+    }
     function sortArray(x, y) {
         if (x['nombre'].toLowerCase() < y['nombre'].toLowerCase()) { return -1 }
         if (x['nombre'].toLowerCase() > y['nombre'].toLowerCase()) { return 1 }
@@ -84,7 +88,7 @@ function Home() {
             <div className='flex justify-center w-full'>
                 <input type="text" className='border-b border-gray-300 gap-4 text-center focus:outline-none  w-[300px]' onChange={onChangeHandler} placeholder='Filtrar por nombre' />
             </div>
-            <div className='min-w-[1900px] flex justify-start items-center my-5 '>
+            <div className='min-w-[1500px] flex justify-start items-center my-5 '>
                 <h3 className="flex pr-12 text-[14px]" htmlFor="">Ciudad</h3>
                 <div className="gap-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 100px) 100px 100px 100px 200px 200px 100px' }}>
                     <Tag theme={ciudad == 'Sucre' ? 'Primary' : 'Secondary'} click={() => setCiudad(ciudad == 'Sucre' ? '' : 'Sucre')}>Sucre</Tag>
@@ -113,15 +117,6 @@ function Home() {
                         <th scope="col" className="px-3 py-3">
                             Ciudad
                         </th>
-                        <th scope="col" className="px-3 py-3">
-                            Dirección
-                        </th>
-                        <th scope="col" className="px-3 py-3">
-                            Dias de atención
-                        </th>
-                        <th scope="col" className="px-3 py-3">
-                            Horarios de atención
-                        </th>
                         <th scope="col" className="px-8 py-3">
                             Telefono
                         </th>
@@ -130,6 +125,9 @@ function Home() {
                         </th>
                         <th scope="col" className="px-3 py-3">
                             Ver Productos
+                        </th>
+                        <th scope="col" className="px-3 py-3">
+                            Ver Pedidos
                         </th>
                         <th scope="col" className="px-3 py-3">
                             Bloquear
@@ -159,19 +157,6 @@ function Home() {
                                 {i['ciudad']}
                             </td>
                             <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
-                                {/* <textarea id="message" rows="6" onChange={(e) => onChangeHandler(e, i)} name='descripcion basica' defaultValue={i['descripcion basica']} className="block p-1.5  w-full h-full text-sm text-gray-900 bg-white rounded-lg  focus:ring-gray-100 focus:border-gray-100 focus:outline-none resize-x-none" placeholder="Write your thoughts here..."></textarea> */}
-                                {i['direccion']}
-                            </td>
-                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
-                                {/* <textarea id="message" rows="6" onChange={(e) => onChangeHandler(e, i)} name='descripcion tecnica' defaultValue={i['descripcion tecnica']} className="block p-1.5  w-full h-full text-sm text-gray-900 bg-white rounded-lg  focus:ring-gray-100 focus:border-gray-100 focus:outline-none resize-x-none" placeholder="Write your thoughts here..."></textarea> */}
-                                {i['direccion']}
-                            </td>
-                            <td className="px-3 py-4 h-full font-semibold text-gray-900 dark:text-white">
-                                {/* <textarea id="message" rows="6" onChange={(e) => onChangeHandler(e, i)} name='uso frecuente' defaultValue={i['uso frecuente']} className="block p-1.5  w-full h-full text-sm text-gray-900 bg-white rounded-lg  focus:ring-gray-100 focus:border-gray-100 focus:outline-none resize-x-none" placeholder="Write your thoughts here..."></textarea> */}
-                                {i['horarios de apertura']} - {i['horarios de cierre']}
-                            </td>
-
-                            <td className="px-3 py-4 font-semibold text-gray-900 dark:text-white">
                                 {/* <textarea id="message" rows="6" onChange={(e) => onChangeHandler(e, i)} name='costo' cols="4" defaultValue={i['costo']} className="block p-1.5 h-full text-sm text-gray-900 bg-white rounded-lg  focus:ring-gray-100 focus:border-gray-100 focus:outline-none resize-x-none" placeholder="Write your thoughts here..."></textarea> */}
                                 {i['telefono']}
                             </td>
@@ -180,19 +165,16 @@ function Home() {
                                 {i['whatsapp']}
                             </td>
                             <td className="px-3 py-4">
-
+                                <Button theme={"Primary"} click={(e) => redirectPedidos(i.uuid)}>Ver pedidos</Button>
+                            </td>
+                            <td className="px-3 py-4">
                                 <Button theme={"Primary"} click={(e) => redirect(i.uuid)}>Ver productos</Button>
-
                             </td>
                             <td className="px-3 py-4">
-
                                 <Button theme={"Danger"} click={() => delet(i)}>Bloquear</Button>
-
                             </td>
                             <td className="px-3 py-4">
-
                                 <Button theme={"Danger"} click={() => delet(i)}>Eliminar</Button>
-
                             </td>
                         </tr>
                     })

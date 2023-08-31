@@ -19,7 +19,7 @@ import Whatsapp from '@/components/Whatsapp'
 
 function Home({ children }) {
   const router = useRouter()
-  const { user, userDB, setUserProfile, setUserCart,businessData, setUserProduct, setRecetaDB, distributorPDB, setUserDistributorPDB, whatsapp, setWhatsapp, setUserData, filter, setFilter, nav, setNav, modal, setModal, cart, introClientVideo, setIntroClientVideo, recetaDBP, setRecetaDBP, productDB, search, setSearch, videoClientRef, setFilterQR, webScann, setWebScann, } = useUser()
+  const { user, userDB, setUserProfile, setUserCart, businessData, setUserProduct, setRecetaDB, distributorPDB, setUserDistributorPDB, whatsapp, setWhatsapp, setUserData, filter, setFilter, nav, setNav, modal, setModal, cart, introClientVideo, setIntroClientVideo, recetaDBP, setRecetaDBP, productDB, search, setSearch, videoClientRef, setFilterQR, webScann, setWebScann, } = useUser()
   const pathname = usePathname()
 
   const redirectHandler = (ref) => {
@@ -92,8 +92,8 @@ function Home({ children }) {
   return (
     // <div className="pt-[65px] pb-[65px] min-h-screen bg-gray-white"  style={{ backgroundImage: `url(bg.png)`, backgroundAttachment: 'fixed', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'bottom' }}>
     <div className="h-screen bg-gray-white">
-      {user && user.bloqueado === true && <Modal funcion={soporte} alert={true}>
-        Esta cuenta ha sido bloqueada, <br /> contactese con el operador
+      {user && user.bloqueado === true && <Modal funcion={soporte} alert={true} close={true}>
+        Esta cuenta esta bloqueada, <br />por favor comuniquese con soporte.
         <br /><br />
         <button type="button" onClick={soporte} className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg  inline-flex items-center px-5 py-4 text-center">
           Contactar
@@ -103,7 +103,10 @@ function Home({ children }) {
         Estas seguro de salir...? <br /> {Object.keys(cart).length > 0 && 'Tus compras no han sido efectuadas'}
       </Modal>}
       {modal == 'Verifica' && <Modal funcion={() => { router.push(`/${user.rol}`); setModal('') }}>
-        Completa tu perfil para hacer tu primera compra
+        Completa tu perfil para hacer tu primera compra.
+      </Modal>}
+      {modal == 'VerificaM' && <Modal funcion={() => { router.push(`/${user.rol}`); setModal('') }}>
+        Completa tu perfil para hacer tu primera receta.
       </Modal>}
       <div className={`fixed top-0 w-[220px] lg:w-[280px]   h-screen bg-[#2A52BE] h-screen transition-all	z-40  ${nav ? 'left-0  ' : 'left-[-220px] lg:left-[-280px] '} z-50`} >
         <div className="py-4 overflow-y-auto ">

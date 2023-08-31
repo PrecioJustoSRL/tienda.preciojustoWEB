@@ -47,27 +47,28 @@ function Home() {
         e.preventDefault()
         if (userDB && userDB[0]['nombre']) {
             setUserSuccess('Cargando')
-            await updateUserData('Medico', { ...state, ciudad: user.ciudad }, user.uuid)
+            await updateUserData('Medico', { ...state, ciudad: user.ciudad, nombre: user.nombre }, user.uuid)
             postImage && uploadStorage('Medico', postImage, user.uuid, updateUserData, true)
             router.push('/Medico/Perfil')
             setUserSuccess('')
         } else {
             setUserSuccess('Cargando')
-            await writeUserData('Medico', { especialidad: 'Traumatologo', ...state, uuid: user.uuid, ciudad: user.ciudad }, user.uuid, userDB, setUserData, setUserSuccess, 'Se ha guardado correctamente',)
+            await writeUserData('Medico', { especialidad: 'Traumatologo', ...state, uuid: user.uuid, ciudad: user.ciudad, nombre: user.nombre  }, user.uuid, userDB, setUserData, setUserSuccess, 'Se ha guardado correctamente',)
             await uploadStorage('Medico', postImage, user.uuid, updateUserData)
             router.push('/Medico/Perfil')
             setUserSuccess('')
         }
     }
-
+// console.log(user.nombre)
     useEffect(() => {
-        if (user && user.rol !== undefined) readUserData(user.rol, user.uuid, setUserData,)
+        // if (user && user.rol !== undefined) readUserData(user.rol, user.uuid, setUserData,)
     }, [user]);
 
     return (
         <div className='w-full flex justify-center'>
             <form className='p-5 bg-white w-full max-w-[800px]' onSubmit={save} >
                 {success === "Cargando" && <LoaderBlack></LoaderBlack>}
+                <h3 className='text-left text-[14px] pb-3'>Bienvenido {user.nombre}</h3>
                 <h3 className='text-center text-[14px] pb-3'>Agregar Perfil</h3>
                 <div className="w-full flex justify-center">
                     <label htmlFor="file" className="block flex justify-center items-center w-[100px] h-[100px] bg-white border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 rounded-[100px]" >
@@ -79,10 +80,10 @@ function Home() {
                 <br />
                 <br />
                 <div className="grid gap-6 mb-6 md:grid-cols-2">
-                    <div>
+                    {/* <div>
                         <Label htmlFor="">Nombre</Label>
                         <Input type="text" name="nombre" onChange={onChangeHandler} defValue={userDB && userDB[0]['nombre']} require />
-                    </div>
+                    </div> */}
                     <div>
                         <Label htmlFor="">Especialidad</Label>
                         <Select arr={['Traumatólogo', 'Neurocirujano', 'Cirujano Plástico', 'Cirujano Maxilofacial', 'Cirujano Toráxico', 'Otros']} name='especialidad' defaultValue={userDB && userDB[0]['especialidad']} click={onClickHandler} />

@@ -4,9 +4,9 @@ import Button from '@/components/Button'
 import { useUser } from '@/context/Context.js'
 import { useRouter } from 'next/navigation';
 
-export default function Card({ nombre1, nombre2, nombre3, costo, url, empresa, descripcion, i, recetado}) {
+export default function Card({  i, recetado, detalle}) {
 
-    const { user, userDB, distributorPDB, setUserDistributorPDB, setUserItem, item, setUserData, setUserSuccess, cart, setUserCart } = useUser()
+    const { user, userDB, distributorPDB, setUserDistributorPDB, setUserItem, item, setUserData, setUserSuccess, cart, setUserCart, modal, setModal, setFilter } = useUser()
     const router = useRouter()
 
     function seeMore(e) {
@@ -14,12 +14,26 @@ export default function Card({ nombre1, nombre2, nombre3, costo, url, empresa, d
         router.push('/Producto')
     }
 
+    // const addCart = (e) => {
+    //     e.preventDefault()
+    //     e.stopPropagation()
+    //     setUserCart({ ...cart, [i.uuid]: { ...i, cantidad: 1 } })
+    // }
     const addCart = (e) => {
         e.preventDefault()
         e.stopPropagation()
-        setUserCart({ ...cart, [i.uuid]: { ...i, cantidad: 1 } })
-    }
+        if (user.rol == 'Clinica' && userDB && userDB.autorizacion == false) {
+            setModal('Auth')
+            return
+        }
+        user && user.rol !== 'Cliente' && (userDB == null || userDB == undefined)
+            ? setModal('VerificaM')
+            : setUserCart({ ...cart, [i.uuid]: { ...i, cantidad: detalle !== undefined ? detalle.cantidad : 1 } })
 
+          if (  detalle !== undefined  ) {
+            setFilter('')
+          }
+    }
     const addPlussCart = (e) => {
         e.preventDefault()
         e.stopPropagation()

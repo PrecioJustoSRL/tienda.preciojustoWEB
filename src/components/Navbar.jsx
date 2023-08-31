@@ -248,7 +248,7 @@ export default function BottomNavigation({ rol }) {
                 <Header />
                 <Profile />
                 <Store />
-                <Products url='Plantilla'></Products>
+                <Products endpoint='Plantilla'></Products>
 
                 <li className="px-5">
                     <Link href="/Administrador/Usuarios" onClick={() => setNav(false)} className="flex items-center p-2 rounded-lg    hover:bg-[#00000030] ">
