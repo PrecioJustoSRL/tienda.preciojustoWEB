@@ -120,7 +120,7 @@ function Home({ children }) {
       {search && <div className='fixed top-0 left-0 w-screen h-screen bg-[#ffffff00] z-40' onClick={() => setSearch(false)}></div>}
       {webScann && <div className='fixed top-0 left-0 w-screen h-screen bg-[#ffffff00] z-40' onClick={() => setWebScann(false)}></div>}
 
-      <main className={`relative min-w-screen  lg:pb-0  lg:min-w-auto my-[0px]  lg:bg-blue-50 lg:min-h-screen  ${nav ? 'w-screen pl-[220px] lg:pl-[280px] ' : '  lg:px-[0px]'}`} onClick={() => setNav(false)} style={{ transition: 'all 0.5' }}>
+      <main className={`relative min-w-screen  lg:pb-0  lg:min-w-auto my-[0px] bg-gray-100 lg:min-h-screen  ${nav ? 'w-screen pl-[220px] lg:pl-[280px] ' : '  lg:px-[0px]'}`} onClick={() => setNav(false)} style={{ transition: 'all 0.5' }}>
         {/* <img src="/bg.png" className='fixed bottom-[60px] lg:bottom-0 right-[20px] w-[60vw] lg:w-[40vw]' alt="" /> */}
         <nav className="w-screen fixed top-0 border-b border-gray-200 shadow-sm flex items-center justify-between bg-[#2A52BE]  p-4 h-[70px] z-30" onClick={() => setNav(false)}>
           {pathname !== '/Cliente' && <div className='flex  hidden lg:block'>
