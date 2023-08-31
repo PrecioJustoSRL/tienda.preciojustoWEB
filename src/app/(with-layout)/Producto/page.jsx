@@ -59,65 +59,70 @@ function Home() {
     console.log(item)
     return (
         item !== undefined ? <main className="relative left-0 right-0 mx-auto px-5 max-w-[900px] flex flex-col items-center lg:flex-row lg:justify-between lg:items-center pt-[20px] pb-[20px] bg-white rounded-[5px]">
-
-            <div className='bg-[#2a52BE] w-full p-5 lg:hidden'>
-                <div className=" font-bold text-[16px] mb-2 text-white">
-                    {item['nombre de producto 1']}
-                </div>
-                <div className=" text-[14px] mb-2 text-white">
-                    {item['nombre de producto 2']}
-                </div>
-                <div className="  text-[14px] mb-2 text-white">
-                    {item['nombre de producto 3']}
-                </div>
-            </div>
-
-            <div className='flex flex-wrap justify-center lg:justify-start md:max-w-[400px] '>
-                <img src={item.url} className='lg:w-[90vw] lg:max-w-[400px] max-h-[200px] lg:max-h-[10000px] lg:px-10' alt="" />
-                <div className='w-full flex justify-end  items-center p-5 lg:px-10'>
-                    <div className="flex items-baseline text-gray-900">
-                        <span className="text-[16px] text-gray-600 font-semibold">BOB</span>
-                        <span className="text-[30px]  text-gray-600 font-extrabold tracking-tight">{item.costo}</span>
+           
+           
+            <div className='shadow-2xl'>
+                <div className='bg-[#2a52BE] w-full p-5 lg:hidden'>
+                    <div className=" font-bold text-[16px] mb-2 text-white">
+                        {item['nombre de producto 1']}
+                    </div>
+                    <div className=" text-[14px] mb-2 text-white">
+                        {item['nombre de producto 2']}
+                    </div>
+                    <div className="  text-[14px] mb-2 text-white">
+                        {item['nombre de producto 3']}
                     </div>
                 </div>
-            </div>
-            <br />
 
-
-
-            <div className='lg:pl-12 lg:border-l bg-gray-100 p-5 lg:bg-white lg:p-0'>
-            <div className='bg-[#2a52BE] w-full p-5 hidden lg:block'>
-                <div className=" font-bold text-[16px] mb-2 text-white">
-                    {item['nombre de producto 1']}
-                </div>
-                <div className=" text-[14px] mb-2 text-white">
-                    {item['nombre de producto 2']}
-                </div>
-                <div className="  text-[14px] mb-2 text-white">
-                    {item['nombre de producto 3']}
-                </div>
-            </div>
-                <Subtitle styled='text-left'>Descripción basica</Subtitle>
-                <p className='text-[14px]'>{item['descripcion basica']}</p>
-                <br />
-                <Subtitle styled='text-left'>Descripción tecnica</Subtitle>
-                <p className='text-[14px]'>{item['descripcion tecnica']}</p>
-                <br />
-                <Subtitle styled='text-left'>Uso frecuente</Subtitle>
-                <p className='text-[14px]'>{item['uso frecuente']}</p>
-                <br />
-                <Subtitle>Cantidad</Subtitle>
-                <div className='relative flex w-full justify-center items-center'>
-                    {cart && cart[item.uuid] && cart[item.uuid].cantidad !== undefined && cart[item.uuid].cantidad !== 0
-                        ? <div className='flex w-[150px] justify-center'>
-                            <Button theme='MiniPrimary' click={(e) => addLessCart(e, item)}>-</Button>
-                            {cart && cart[item.uuid] && cart[item.uuid].cantidad !== undefined && cart[item.uuid].cantidad !== 0 && <span className='flex justify-center items-center text-[16px] text-right px-5 w-[40px] font-bold'> {cart[item.uuid].cantidad} </span>}
-                            <Button theme='MiniSecondary' click={(e) => addPlussCart(e, item)}>+</Button>
+                <div className='flex flex-wrap justify-center lg:justify-start md:max-w-[400px] '>
+                    <img src={item.url} className='lg:w-[90vw] lg:max-w-[400px] max-h-[200px] lg:max-h-[10000px] lg:px-10' alt="" />
+                    <div className='w-full flex justify-end  items-center p-5 lg:px-10'>
+                        <div className="flex items-baseline text-gray-900">
+                            <span className="text-[16px] text-gray-600 font-semibold">BOB</span>
+                            <span className="text-[30px]  text-gray-600 font-extrabold tracking-tight">{item.costo}</span>
                         </div>
-                        : <Button theme='MiniPrimaryComprar' click={(e) => addCart(e, item)}>Comprar</Button>
-                    }
+                    </div>
                 </div>
                 <br />
+
+
+
+                <div className='lg:pl-12 lg:border-l bg-gray-100 p-5 lg:bg-white lg:p-0'>
+                    <div className='bg-[#2a52BE] w-full p-5 hidden lg:block'>
+                        <div className=" font-bold text-[16px] mb-2 text-white">
+                            {item['nombre de producto 1']}
+                        </div>
+                        <div className=" text-[14px] mb-2 text-white">
+                            {item['nombre de producto 2']}
+                        </div>
+                        <div className="  text-[14px] mb-2 text-white">
+                            {item['nombre de producto 3']}
+                        </div>
+                    </div>
+                    <Subtitle styled='text-left'>Descripción basica</Subtitle>
+                    <p className='text-[14px]'>{item['descripcion basica']}</p>
+                    <br />
+                    <Subtitle styled='text-left'>Descripción tecnica</Subtitle>
+                    <p className='text-[14px]'>{item['descripcion tecnica']}</p>
+                    <br />
+                    <Subtitle styled='text-left'>Uso frecuente</Subtitle>
+                    <p className='text-[14px]'>{item['uso frecuente']}</p>
+                    <br />
+                    <Subtitle>Cantidad</Subtitle>
+                    <div className='relative flex w-full justify-center items-center'>
+                        {cart && cart[item.uuid] && cart[item.uuid].cantidad !== undefined && cart[item.uuid].cantidad !== 0
+                            ? <div className='flex w-[150px] justify-center'>
+                                <Button theme='MiniPrimary' click={(e) => addLessCart(e, item)}>-</Button>
+                                {cart && cart[item.uuid] && cart[item.uuid].cantidad !== undefined && cart[item.uuid].cantidad !== 0 && <span className='flex justify-center items-center text-[16px] text-right px-5 w-[40px] font-bold'> {cart[item.uuid].cantidad} </span>}
+                                <Button theme='MiniSecondary' click={(e) => addPlussCart(e, item)}>+</Button>
+                            </div>
+                            : <Button theme='MiniPrimaryComprar' click={(e) => addCart(e, item)}>Comprar</Button>
+                        }
+                    </div>
+                    <br />
+                </div>
+
+
             </div>
             {Object.entries(cart).length !== 0 && <div className="fixed w-screen px-5 bottom-[70px] lg:w-[250px] lg:bottom-auto lg:top-[75px] lg:left-auto lg:right-5  z-20">
                 {tienda === 'Recetar'
