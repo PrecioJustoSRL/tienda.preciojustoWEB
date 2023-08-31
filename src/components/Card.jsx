@@ -6,9 +6,9 @@ import { useUser } from '@/context/Context.js'
 import { useRouter } from 'next/navigation';
 import { unstable_renderSubtreeIntoContainer } from 'react-dom';
 
-export default function Card({ nombre1, nombre2, nombre3, costo, url, empresa, descripcion, i, recetado, detalle}) {
+export default function Card({ nombre1, nombre2, nombre3, costo, url, empresa, descripcion, i, recetado, detalle }) {
 
-    const { user, userDB, distributorPDB, setUserDistributorPDB, setUserItem, item, setUserData, setUserSuccess, cart, setUserCart, modal, setModal, setFilter } = useUser()
+    const { setFilterDis, user, userDB, distributorPDB, setUserDistributorPDB, setUserItem, item, setUserData, setUserSuccess, cart, setUserCart, modal, setModal, setFilter } = useUser()
     const router = useRouter()
     // console.log(userDB)
     function seeMore(e) {
@@ -19,17 +19,25 @@ export default function Card({ nombre1, nombre2, nombre3, costo, url, empresa, d
     const addCart = (e) => {
         e.preventDefault()
         e.stopPropagation()
+
+
         if (user.rol == 'Clinica' && userDB && userDB.autorizacion == false) {
             setModal('Auth')
             return
         }
-        user && user.rol !== 'Cliente' && (userDB == null || userDB == undefined)
-            ? setModal('Verifica')
-            : setUserCart({ ...cart, [i.uuid]: { ...i, cantidad: detalle !== undefined ? detalle.cantidad : 1 } })
+        if (user && user.rol !== 'Cliente' && (userDB == null || userDB == undefined)) {
+            setModal('Verifica')
+        } else {
+            setUserCart({ ...cart, [i.uuid]: { ...i, cantidad: detalle !== undefined ? detalle.cantidad : 1 } })
+            setFilterDis(i.distribuidor)
+        }
 
-          if (  detalle !== undefined  ) {
+
+
+
+        if (detalle !== undefined) {
             setFilter('')
-          }
+        }
     }
 
     const addPlussCart = (e) => {

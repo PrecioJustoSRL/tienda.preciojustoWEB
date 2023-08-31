@@ -23,11 +23,12 @@ import { QRreaderUtils } from '@/utils/QRreader'
 import { useState } from 'react'
 
 function Home() {
-    const { user, userDB, cart, modal, setModal, productDB, setUserProduct, setUserItem, item, filter, setFilter, filterQR, setTienda, setFilterQR, recetaDBP, setRecetaDBP, tienda, setIntroClientVideo, search, setSearch, distributorPDB, setUserDistributorPDB, webScann, setWebScann, qrBCP, setQrBCP } = useUser()
+    const {filterDis, setFilterDis, user, userDB, cart, modal, setModal, productDB, setUserProduct, setUserItem, item, filter, setFilter, filterQR, setTienda, setFilterQR, recetaDBP, setRecetaDBP, tienda, setIntroClientVideo, search, setSearch, distributorPDB, setUserDistributorPDB, webScann, setWebScann, qrBCP, setQrBCP } = useUser()
     const [disponibilidad, setDisponibilidad] = useState('')
     const [categoria, setCategoria] = useState('')
     const router = useRouter()
     const [filterNav, setFilterNav] = useState(false)
+
 
     function HandlerCheckOut() {
         router.push('/Cliente/Comprar')
@@ -95,7 +96,7 @@ function Home() {
 
     }, [user, filterQR]);
 
-    console.log(recetaDBP && JSON.parse(recetaDBP[0].receta).map((i) => i.uuid))
+    console.log(cart)
     return (
 
         <main className="">
@@ -248,7 +249,7 @@ function Home() {
                         productDB.sort(sortArray).map((i, index) => {
                             if (i.distribuidor !== 'Precio-Justo-SRL-Data') return tienda === 'Recetar'
                                 ? i.disponibilidad !== 'No disponible' && <CardM i={i} key={index} />
-                                : i.disponibilidad !== 'No disponible' && i.disponibilidad.includes(disponibilidad) && i.categoria.includes(categoria) && <Card i={i} key={index} />
+                                : i.disponibilidad !== 'No disponible' &&  i.disponibilidad.includes(disponibilidad) && i.categoria.includes(categoria) &&  i.distribuidor.includes(filterDis) && <Card i={i} key={index} />
                         }
                         )}
                 </div>

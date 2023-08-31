@@ -49,6 +49,7 @@ export function UserProvider({ children }) {
 	const [businessData, setBusinessData] = useState(undefined)
 	const [qrBCP, setQrBCP] = useState(undefined)
 	const [paySuccess, setPaySuccess] = useState(undefined)
+    const [filterDis, setFilterDis] = useState('')
 
 
 
@@ -142,7 +143,8 @@ export function UserProvider({ children }) {
 			whatsappMSG,
 			businessData, 
 			webScann, 
-			qrBCP,paySuccess, setPaySuccess, setQrBCP,
+			qrBCP,paySuccess, filterDis, setFilterDis,
+			setPaySuccess, setQrBCP,
 			setWebScann, 
 			setBusinessData,
 			setWhatsappMSG,
@@ -187,7 +189,7 @@ export function UserProvider({ children }) {
 		businessData,
 		webScann,
 		qrBCP,
-		paySuccess])
+		paySuccess, filterDis])
 
 	return (
 		<UserContext.Provider value={value} >

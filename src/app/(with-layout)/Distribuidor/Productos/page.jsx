@@ -43,7 +43,7 @@ function Home() {
         const data = await readUserData('Producto', queryUuid, null, 'distribuidor')
         await deleteUserData('Producto', user.uuid, 'distribuidor')
 
-        data.map(async i => {
+        await data.map(async i => {
             const obj = { ...i }
             delete obj.id
             return await writeUserData('Producto', { ...obj, uuid: generateUUID(), distribuidor: user.uuid, ciudad: user.ciudad }, user.uuid, userDB, setUserData, setUserSuccess, 'Se ha guardado correctamente', 'Perfil')
