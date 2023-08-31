@@ -87,7 +87,7 @@ function Home() {
 
 
 
-                <div className='lg:pl-12 lg:border-l bg-white lg:p-0'>
+                <div className='lg:pl-12 lg:border-l bg-white lg:p-0 p-5'>
                     <div className='bg-[#2a52BE] w-full p-5 hidden lg:block'>
                         <div className=" font-bold text-[16px] mb-2 text-white">
                             {item['nombre de producto 1']}

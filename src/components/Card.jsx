@@ -96,7 +96,7 @@ export default function Card({ nombre1, nombre2, nombre3, costo, url, empresa, d
                 <div className="flex items-baseline text-gray-900 bg-white rounded-full px-5 py-2">
                     <span className='inline-block mr-3 h-[35px] w-[35px]  border-4 border-double rounded-full text-[20px] text-[#32CD32] font-bold text-center border-[#32CD32]'>$</span>
                     <span className="text-[18px]  text-gray-600 font-extrabold tracking-tight">{i.costo}</span>
-                    <span className="text-[18px]  text-gray-600 font-extrabold tracking-tight"> BS</span>
+                    <span className="text-[14px] text-gray-600 font-semibold">BS</span>
                 </div>
             </div>
             {user.rol !== 'Distribuidor' && <div className='flex py-4 pr-4'>

@@ -4,7 +4,7 @@ import Button from '@/components/Button'
 import { useUser } from '@/context/Context.js'
 import { useRouter } from 'next/navigation';
 
-export default function Card({  i, recetado, detalle}) {
+export default function Card({ i, recetado, detalle }) {
 
     const { user, userDB, distributorPDB, setUserDistributorPDB, setUserItem, item, setUserData, setUserSuccess, cart, setUserCart, modal, setModal, setFilter } = useUser()
     const router = useRouter()
@@ -30,9 +30,9 @@ export default function Card({  i, recetado, detalle}) {
             ? setModal('VerificaM')
             : setUserCart({ ...cart, [i.uuid]: { ...i, cantidad: detalle !== undefined ? detalle.cantidad : 1 } })
 
-          if (  detalle !== undefined  ) {
+        if (detalle !== undefined) {
             setFilter('')
-          }
+        }
     }
     const addPlussCart = (e) => {
         e.preventDefault()
@@ -52,7 +52,7 @@ export default function Card({  i, recetado, detalle}) {
     }
     return (
 
-            <div className="relative w-full bg-gray-50 min-h-[180px] max-w-[500px] rounded-[15px] rounded-[20px] rounded-bl-[10px] shadow-sm shadow-[#2A52BE] mt-5 overflow-hidden" onClick={(e) => seeMore(e, i)} style={{ display: 'grid', gridTemplateColumns: 'auto 150px', gridAutoFlow: 'dense' }}>
+        <div className="relative w-full bg-gray-50 min-h-[180px] max-w-[500px] rounded-[15px] rounded-[20px] rounded-bl-[10px] shadow-sm shadow-[#2A52BE] mt-5 overflow-hidden" onClick={(e) => seeMore(e, i)} style={{ display: 'grid', gridTemplateColumns: 'auto 150px', gridAutoFlow: 'dense' }}>
             <div className=" font-bold text-[16px] bg-[#32CD32] flex flex-col w-full justify-between items-between text-gray-950 col-span-2 p-5">
                 <div className=" font-bold text-[16px]  text-gray-950">
                     {i['nombre de producto 1']}
@@ -85,8 +85,11 @@ export default function Card({  i, recetado, detalle}) {
             </div>
             <div className='w-full flex justify-between  items-center p-4'>
                 <div className="flex items-baseline text-gray-900">
-                    <span className="text-[14px] text-gray-600 font-semibold">BOB</span>
-                    <span className="text-[18px]  text-gray-600 font-extrabold tracking-tight">{i.costo}</span>
+                    <div className="flex items-baseline text-gray-900 bg-white rounded-full px-5 py-2">
+
+                        <span className="text-[18px]  text-gray-600 font-extrabold tracking-tight">{i.costo}</span>
+                        <span className="text-[14px] text-gray-600 font-semibold">BS</span>
+                    </div>
                 </div>
             </div>
             <div className='flex py-4 pr-4'>
