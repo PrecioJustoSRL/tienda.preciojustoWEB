@@ -60,7 +60,7 @@ function Home() {
     return (
         item !== undefined ? <main className="relative left-0 right-0 mx-auto px-5 max-w-[900px] flex flex-col items-center lg:flex-row lg:justify-between lg:items-center pt-[20px] pb-[20px] bg-white rounded-[5px]">
 
-            <div className='bg-[#2a52BE] w-full p-5 '>
+            <div className='bg-[#2a52BE] w-full p-5 lg:hidden'>
                 <div className=" font-bold text-[16px] mb-2 text-white">
                     {item['nombre de producto 1']}
                 </div>
@@ -86,7 +86,17 @@ function Home() {
 
 
             <div className='lg:pl-12 lg:border-l bg-gray-100 p-5 lg:bg-white lg:p-0'>
-
+            <div className='bg-[#2a52BE] w-full p-5 hidden lg:block'>
+                <div className=" font-bold text-[16px] mb-2 text-white">
+                    {item['nombre de producto 1']}
+                </div>
+                <div className=" text-[14px] mb-2 text-white">
+                    {item['nombre de producto 2']}
+                </div>
+                <div className="  text-[14px] mb-2 text-white">
+                    {item['nombre de producto 3']}
+                </div>
+            </div>
                 <Subtitle styled='text-left'>Descripción basica</Subtitle>
                 <p className='text-[14px]'>{item['descripcion basica']}</p>
                 <br />
