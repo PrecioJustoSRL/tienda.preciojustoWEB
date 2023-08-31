@@ -41,15 +41,15 @@ export default function Card({ nombre1, nombre2, nombre3, costo, url, empresa, d
         
             <tbody>
                 <tr className="bg-white text-[12px] border-b hover:bg-gray-50 " >
-                    <td className="px-3 py-4  flex flex-col text-[16px] font-extrabold text-gray-700">
+                    <td className="px-3 py-4  flex flex-col text-[16px]  text-gray-700">
                         {i['nombre de producto 1']} 
                         
                         <div className="flex w-full justify-center text-gray-900">
-                            <span className="text-[16px]  text-gray-700 font-extrabold tracking-tight">{i.costo} Bs.</span>
+                            <span className="text-[16px]  text-gray-700  tracking-tight">{i.costo} Bs.</span>
                             {/* <span className="text-[16px]  text-gray-700  font-extrabold">   Bs.</span> */}
                         </div>
                     </td>
-                    <td className="px-3 py-4 font-semibold text-gray-900">
+                    <td className="px-3 py-4  text-gray-900">
                         <div  className="lg:flex lg:w-full lg:justify-center">
 
 
@@ -68,7 +68,7 @@ export default function Card({ nombre1, nombre2, nombre3, costo, url, empresa, d
                     </td>
                     <td className="px-3 py-4 font-semibold text-gray-900">
                         <div className="flex items-baseline text-gray-900">
-                            <span className="text-[16px]  text-gray-700 font-extrabold tracking-tight">{ cart && cart[i.uuid] && cart[i.uuid].cantidad !== undefined ? cart[i.uuid].cantidad * i.costo : i.costo } Bs.</span>
+                            <span className="text-[16px]  text-gray-700  tracking-tight">{ cart && cart[i.uuid] && cart[i.uuid].cantidad !== undefined ? cart[i.uuid].cantidad * i.costo : i.costo } Bs.</span>
                             {/* <span className="text-[16px]  text-gray-700  font-extrabold">   Bs.</span> */}
                         </div>
                     </td>

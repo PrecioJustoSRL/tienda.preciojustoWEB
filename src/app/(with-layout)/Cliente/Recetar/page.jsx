@@ -105,16 +105,10 @@ setQr(null)
 
   return (<div className='w-full flex flex-col justify-center items-center'>
     {modal == 'Finish' && <Modal funcion={finishConfirm}>Estas seguro de finalizar se <br /> archivara la receta que generaste.</Modal>}
-
-
-
     <div className=' bg-white w-full max-w-[800px] p-5'>
 
-
-
-
       <form className='min-w-[90%]' onSubmit={handlerPay}>
-        <h3 className='text-center text-[16px] pb-3'>PACIENTE</h3>
+      <Subtitle>RECETA</Subtitle> 
         <div className="grid gap-6 mb-6 md:grid-cols-2">
           <div>
             <Label htmlFor="">Paciente</Label>

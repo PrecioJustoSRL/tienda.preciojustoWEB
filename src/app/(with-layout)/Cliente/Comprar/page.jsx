@@ -113,32 +113,32 @@ function Comprar({ theme, styled, click, children }) {
   }, [paySuccess]);
 
   console.log(userDB)
-  return (<div className='w-full relative p-5 pb-[50px]'>
+  return (<div className='w-full min-h-screen relative px-5 pb-[50px] bg-gray-100'>
     {success == 'Complete' && <Msg>Complete el formulario</Msg>}
     <InvoicePDF />
     <form >
       <Subtitle>DATOS DEL PACIENTE</Subtitle>
       <div className="grid gap-6 mb-6 md:grid-cols-2">
         <div>
-          <Label htmlFor="">NOMBRE DEL PACIENTE</Label>
+          <Label htmlFor="">Nombre del paciente</Label>
           <Input type="text" name="nombre del paciente" onChange={onChangeHandler} require />
         </div>
         <div>
-          <Label htmlFor="">NÚMERO DE CELULAR</Label>
+          <Label htmlFor="">Celular del paciente</Label>
           <Input type="text" name="celular del paciente" onChange={onChangeHandler} require />
         </div>
         <div>
-          <Label htmlFor="">NÚMERO DE CELULAR REFERENCIA</Label>
+          <Label htmlFor="">Numero de celular de referencia</Label>
           <Input type="text" name="referencia del paciente" onChange={onChangeHandler} require />
         </div>
         <div>
           <div className="mb-2">
-            <Label htmlFor="">REFERENCIA DEL LUGAR</Label>
+            <Label htmlFor="">Referencia de lugar</Label>
             <div className="flex items-center" onClick={() => handlerCheck(false)}>
               <div className="flex  mt-[2px] h-5 mr-5">
                 <input id="remember" type="radio" value="" checked={check == false ? true : false} onClick={() => handlerCheck(false)} className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required />
               </div>
-              <label htmlFor="remember" className="ml-2 text-[16px] " onClick={() => handlerCheck(false)}>Para la ciudad</label>
+              <label htmlFor="remember" className="ml-2 text-[14px] " onClick={() => handlerCheck(false)}>Para la ciudad</label>
             </div>
           </div>
 
@@ -147,7 +147,7 @@ function Comprar({ theme, styled, click, children }) {
               <div className="flex  mt-[2px] h-5 mr-5">
                 <input id="remember1" type="radio" value="" checked={check == true ? true : false} onClick={() => handlerCheck(true)} className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required />
               </div>
-              <label htmlFor="remember1" className="ml-2 text-[16px] " onClick={() => handlerCheck(true)} >Para provincia (+350bs)</label>
+              <label htmlFor="remember1" className="ml-2 text-[14px] " onClick={() => handlerCheck(true)} >Para provincia (+350bs)</label>
             </div>
           </div>
         </div>
@@ -189,20 +189,21 @@ function Comprar({ theme, styled, click, children }) {
       </div>
     </div>}
 
-    <h3 className='text-center text-[16px] px-5 py-2 bg-[#2A52BE] text-white' >MIS COMPRAS</h3>
 
-    <div className='relative overflow-x-auto items-center justify-between w-full max-w-screen bg-transparent md:w-auto lg:max-w-auto transition-all	z-0' >
+    <div className='relative border-t-4 border-t-gray-400 bg-white overflow-x-auto items-center justify-between w-full max-w-screen bg-transparent md:w-auto lg:max-w-auto transition-all	z-0' >
+    <h3 className='text-center  border-[1px] border-gray-200  bg-white text-[16px] px-5 py-2  font-bold' >MIS COMPRAS</h3>
 
-      <table className="w-full lg:min-w-[800px] border-[1px] border-gray-200 lg:w-full lg:min-w-auto text-[12px] text-left text-gray-500">
+      <table className="w-full  lg:min-w-[800px] border-[1px] border-gray-200 lg:w-full lg:min-w-auto text-[12px] text-left text-gray-500">
+
         {Object.values(cart).length > 0 && <thead className="text-[12px] text-gray-700 uppercase bg-gray-50">
           <tr>
-            <th scope="col-3" className="w-1/2 px-2 py-3">
+            <th scope="col-3" className="w-1/2 px-2 py-3 text-[16px]">
               Producto
             </th>
-            <th scope="col" className="px-0 py-3 text-center">
+            <th scope="col" className="px-0 py-3 text-center text-[16px]">
               Cantidad
             </th>
-            <th scope="col" className="px-2 w-[200px] py-3">
+            <th scope="col" className="px-2 w-[200px] py-3 text-[16px]">
               Costo total
             </th>
           </tr>
@@ -212,11 +213,11 @@ function Comprar({ theme, styled, click, children }) {
 
         {Object.values(cart).length > 0 && <tbody>
           <tr className="bg-white text-[12px] border-b">
-            <td className="px-2 py-4  flex text-[16px] text-gray-700 font-extrabold text-gray-900">
+            <td className="px-2 py-4  flex text-[16px] text-gray-700  text-gray-900">
               TOTAL:
             </td>
             <td>{check && '+350 Bs *Para provincia'}</td>
-            <td className="px-2 py-4 font-extrabold  text-[16px] text-gray-700">
+            <td className="px-2 py-4   text-[16px] text-gray-700">
               {Object.values(cart).reduce((acc, i, index) => {
                 const sum = i['costo'] * i['cantidad']
                 return sum + acc
