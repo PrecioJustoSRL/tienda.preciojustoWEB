@@ -24,7 +24,7 @@ import Modal from '@/components/Modal'
 
 
 export default function BottomNavigation({ rol }) {
-    const { user, userDB, modal, setModal, setUserProfile, setUserData, setUserProduct, setRecetaDB, setUserCart, setUserDistributorPDB, filter, setFilter, nav, setNav } = useUser()
+    const { user, userDB, modal, setModal, setUserProfile, businessData, setUserData, setUserProduct, setRecetaDB, setUserCart, setUserDistributorPDB, filter, setFilter, nav, setNav } = useUser()
 
     const router = useRouter()
 
@@ -37,12 +37,10 @@ export default function BottomNavigation({ rol }) {
     }
 
     const redirectHandlerWindow = () => {
-        window.open("https://api.whatsapp.com/send?phone=+59169941749&text=hola%20mundo", '_blank')
+        window.open(`https://api.whatsapp.com/send?phone=${businessData[0].whatsapp.replaceAll(' ', '')}&text=hola%20necesito%20un%20implante%20de%20osteosintesis%20¿Pueden%20ayudarme?%20`, '_blank')
         setNav(false)
         // setWhatsapp(!whatsapp)
     }
-
-
 
 
     const Header = () => {
@@ -234,7 +232,7 @@ export default function BottomNavigation({ rol }) {
                 <Header />
                 <Profile />
                 <Store />
-                <Products url='Productos'></Products>
+                <Products endpoint='Productos'></Products>
                 <li className="px-5">
                     <Link href="/Distribuidor/Archivados" onClick={() => setNav(false)} className="flex items-center p-2 rounded-lg    hover:bg-[#00000030] ">
                         <svg aria-hidden="true" className="flex-shrink-0 w-8 h-8  transition duration-75 dark:text-gray-400 group-hover:text-white dark:group-hover:text-white" fill="white" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>

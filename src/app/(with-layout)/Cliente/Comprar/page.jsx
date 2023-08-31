@@ -57,13 +57,14 @@ function Comprar({ theme, styled, click, children }) {
     }, 0)
     return val
   }
+  console.log(window.location.href.includes('https'))
 
   const requestQR = async () => {
     const amount = calculator()
     try {
       console.log('her')
       //**********************BCP*************************
-      const res = await fetch('https://preciojusto.pro/api', {
+      const res = await fetch(window.location.href.includes('https') ? 'https://preciojusto.pro/api' : 'http://localhost:3000/api', {
         method: 'POST',
         body: JSON.stringify({ amount: amount + (check ? 350 : 0) }),
         headers: new Headers({
@@ -86,7 +87,7 @@ function Comprar({ theme, styled, click, children }) {
         // writeUserData('Pedido', { ...data, envio: check, ...state, estado: 'nuevo', cliente: user.uuid, ...write }, null, null, null, null, null, null)
      return data
       })
-      writeUserData('Pedido', { compra: arr, envio: check, ...state, estado: 'Pendiente', cliente: user.uuid, ...write }, null, null, null, null, null, null)
+      writeUserData('Pedido', { compra: arr, envio: check, ...state, estado: 'Pendiente', cliente: user.uuid, correo: user.correo, ...write }, null, null, null, null, null, null)
 
       // router.push('/Cliente/Comprar/Detalle')
       // setTimeout(() => { updateUserData('Pedido', { message: 'Correcto' }, data.data.id, 'idBCP') }, 6000)
@@ -144,9 +145,9 @@ function Comprar({ theme, styled, click, children }) {
           <div className="flex items-center">
             <div className="flex items-center" onClick={() => handlerCheck(true)}>
               <div className="flex  mt-[2px] h-5 mr-5">
-                <input id="remember" type="radio" value="" checked={check == true ? true : false} onClick={() => handlerCheck(true)} className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required />
+                <input id="remember1" type="radio" value="" checked={check == true ? true : false} onClick={() => handlerCheck(true)} className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required />
               </div>
-              <label htmlFor="remember" className="ml-2 text-[14px] font-medium " onClick={() => handlerCheck(true)} >Para provincia (+350bs)</label>
+              <label htmlFor="remember1" className="ml-2 text-[14px] font-medium " onClick={() => handlerCheck(true)} >Para provincia (+350bs)</label>
             </div>
           </div>
         </div>

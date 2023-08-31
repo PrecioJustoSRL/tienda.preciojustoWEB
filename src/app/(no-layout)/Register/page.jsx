@@ -10,6 +10,7 @@ import Select from '@/components/Select'
 import { WithAuth } from '@/HOCs/WithAuth'
 import Video from '@/components/Video'
 import { departamentos } from '@/constants'
+import Msg from '@/components/Msg'
 
 
 import { useRouter } from 'next/navigation';
@@ -27,12 +28,13 @@ function Home() {
         setRol(value)
     }
     const onClickHandlerCity = (name, value) => {
+        value !== 'Seleccionar' && setUserSuccess('Importand')
         setCiudad(value)
     }
     const registerHandler = async (e) => {
         e.preventDefault()
         let nombre = e.target[0].value
-        const data = await writeUserData('Users', { uuid: user.id, nombre, rol, ciudad }, user.id, user, setUserProfile, setUserSuccess)
+        const data = await writeUserData('Users', { uuid: user.id, nombre, rol, ciudad, correo: user.email}, user.id, user, setUserProfile, setUserSuccess)
         console.log(data)
         setUserProfile(data[0])
         return data && dada[0] && dada[0].rol ? router.push('/Cliente') : ''
@@ -59,7 +61,7 @@ function Home() {
     return (
         <div className="min-h-full "
             style={{
-                backgroundImage: 'url(/bg-signup.jpg)',
+                backgroundImage: 'url(/bg-signup.avif)',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: '50% 50%',
                 backgroundAttachment: 'fixed',
@@ -76,20 +78,20 @@ function Home() {
                     <h5 className="text-[18px] text-center text-white">Registrate</h5>
                     <br />                        <div>
                         <label htmlFor="email" className="block mb-2 text-[16px] text-left font-medium text-white">Nombre</label>
-                        <Input type="text" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="" required />
+                        <Input type="text" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="" require />
                     </div>
                     <div>
                         <label htmlFor="email" className="block mb-2 text-[16px] text-left font-medium text-white">Tipo de cuenta</label>
                         <Select arr={['Cliente', 'Medico', 'Clinica', 'Distribuidor']} name='rol' click={onClickHandler} />
                     </div>
                     <div>
-                        <label htmlFor="password" className="block mb-2 text-[16px] text-left  font-medium text-white">Ciudad</label>
+                        <label htmlFor="password" className="block mb-2 text-[16px] text-left  font-medium text-white">Departamento</label>
                         <Select arr={departamentos} name='Ciudad' click={onClickHandlerCity} />
                     </div>
                     <div className="flex items-start">
                         <div className="flex items-center">
                             <div className="flex items-center h-5">
-                                <input id="remember" type="checkbox" value="" className="w-[16px] h-[16px] border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 " required />
+                                <input id="remember" type="checkbox" value="" className="w-[16px] h-[16px] border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 " require />
                             </div>
                             <Link href="/Politicas" className="ml-2 text-[14px] font-medium text-gray-100 underline">Políticas de Servicio</Link>
                         </div>        
@@ -100,6 +102,7 @@ function Home() {
                     </div>
                 </form>
             </div>
+            {success == 'Importand' && <Msg>Esta información es importante,<br /> por favor revisa que sea correcta.</Msg>}
         </div>
     )
 }

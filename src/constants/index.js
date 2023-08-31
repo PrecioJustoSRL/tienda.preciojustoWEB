@@ -1,4 +1,5 @@
 const departamentos = [
+    'Seleccionar',
     'La Paz', 
     'Cochabamba', 
     'Santa Cruz',

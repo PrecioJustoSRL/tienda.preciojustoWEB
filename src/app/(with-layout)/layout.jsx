@@ -79,7 +79,7 @@ function Home({ children }) {
 
   useEffect(() => {
     readUserData('Producto', 'Precio-Justo-SRL-Data', setUserDistributorPDB, 'distribuidor')
-
+    user && user.bloqueado === true && setModal(Bloqueado)
     readUserAllData('Producto', productDB, setUserProduct)
     // readUserAllData('Receta', recetaDBP, setRecetaDBP)
   }, [user]);
@@ -88,7 +88,9 @@ function Home({ children }) {
   return (
     // <div className="pt-[65px] pb-[65px] min-h-screen bg-gray-white"  style={{ backgroundImage: `url(bg.png)`, backgroundAttachment: 'fixed', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'bottom' }}>
     <div className="h-screen bg-gray-white">
-
+      {modal == 'Bloqueado' && <Modal funcion={signOutConfirm}>
+        Esta cuenta ha sido bloqueada, <br /> contactese con el operador
+      </Modal>}
       {modal == 'SignOut' && <Modal funcion={signOutConfirm}>
         Estas seguro de salir...? <br /> {Object.keys(cart).length > 0 && 'Tus compras no han sido efectuadas'}
       </Modal>}
@@ -154,13 +156,14 @@ function Home({ children }) {
               && distributorPDB !== null
               && distributorPDB !== undefined
               && distributorPDB.filter((obj, index) => index === distributorPDB.findIndex(o => obj['nombre de producto 1'] === o['nombre de producto 1'])).sort(sortArray).filter((i, index) => {
-                if (i['nombre de producto 1'].toLowerCase().includes(filter.toLowerCase())) { return i}
-                if (i['nombre de producto 2'] && i['nombre de producto 2'].toLowerCase().includes(filter.toLowerCase())) { return i}
-                if (i['nombre de producto 3'] && i['nombre de producto 3'].toLowerCase().includes(filter.toLowerCase())) { return i}}
-              ).map((i, index)=><div className={`w-full text-[12px] px-5 py-2 ${(index + 1) % 2 === 0 ? 'bg-white' : 'bg-gray-100'}`} style={{ display: 'grid', gridTemplateColumns: '30px auto', }} onClick={() => handlerSearchFilter(i['nombre de producto 1'])}>
-              <svg className="w-8 h-8 text-white " aria-hidden="true" fill="text-gray-100" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill="#2A52BE" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
-              <div className='pl-5'>{i['nombre de producto 1'] && i['nombre de producto 1']}</div>
-            </div>)}
+                if (i['nombre de producto 1'].toLowerCase().includes(filter.toLowerCase())) { return i }
+                if (i['nombre de producto 2'] && i['nombre de producto 2'].toLowerCase().includes(filter.toLowerCase())) { return i }
+                if (i['nombre de producto 3'] && i['nombre de producto 3'].toLowerCase().includes(filter.toLowerCase())) { return i }
+              }
+              ).map((i, index) => <div className={`w-full text-[12px] px-5 py-2 ${(index + 1) % 2 === 0 ? 'bg-white' : 'bg-gray-100'}`} style={{ display: 'grid', gridTemplateColumns: '30px auto', }} onClick={() => handlerSearchFilter(i['nombre de producto 1'])}>
+                <svg className="w-8 h-8 text-white " aria-hidden="true" fill="text-gray-100" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill="#2A52BE" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
+                <div className='pl-5'>{i['nombre de producto 1'] && i['nombre de producto 1']}</div>
+              </div>)}
           </div>}
 
         <div className="lg:px-[50px] pt-[85px] pb-[65px] md:pt-[85px] md:pb-5 h-screen overflow-y-auto">
@@ -187,7 +190,7 @@ function Home({ children }) {
 export default Home
 
 
-        {/* {search
+{/* {search
           && filter.length > 0
           && distributorPDB !== null
           && distributorPDB !== undefined && <div className='w-[100vw] max-w-[800px] fixed top-[70px] left-0 right-0 mx-auto border-[2px] border-white max-h-[40vh] overflow-y-auto z-30 bg-white'>

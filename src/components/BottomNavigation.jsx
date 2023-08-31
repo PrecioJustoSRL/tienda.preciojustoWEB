@@ -53,16 +53,19 @@ export default function BottomNavigation({ rol }) {
 
     }
 
-    const redirectHandlerWindow = (ref) => {
-        businessData && businessData[0] && businessData[0].whatsapp
-            ? window.open(`https://api.whatsapp.com/send?phone=${businessData[0].whatsapp}&text=hola%20mundo`, '_blank')
-            : window.open(`https://api.whatsapp.com/send?phone=+59169941749&text=hola%20mundo`, '_blank')
+    // const redirectHandlerWindow = (ref) => {
+    //     businessData && businessData[0] && businessData[0].whatsapp
+    //         ? window.open(`https://api.whatsapp.com/send?phone=${businessData[0].whatsapp}&text=hola%20mundo`, '_blank')
+    //         : window.open(`https://api.whatsapp.com/send?phone=+59169941749&text=hola%20mundo`, '_blank')
+    //     // setWhatsapp(!whatsapp)
+    // }
+    
+
+    const redirectHandlerWindow = () => {
+        window.open(`https://api.whatsapp.com/send?phone=${businessData[0].whatsapp.replaceAll(' ', '')}&text=hola%20necesito%20un%20implante%20de%20osteosintesis%20¿Pueden%20ayudarme?%20`, '_blank')
+        setNav(false)
         // setWhatsapp(!whatsapp)
     }
-
-    // const  handlerSoport = () => {
-
-    // }
 
 
 
@@ -192,7 +195,7 @@ export default function BottomNavigation({ rol }) {
                     </svg>
                     <span className="text-[12px] text-white   ">Video</span>
                 </Button>
-                <Button click={() => redirectHandlerWindow(`https://api.whatsapp.com/send?phone=+59169941749&text=hola%20mundo`, 'whatsapp')}>
+                <Button click={redirectHandlerWindow}>
                     <Support />
                     <span className="text-[12px] text-white   ">Soporte</span>
                 </Button>
@@ -212,7 +215,7 @@ export default function BottomNavigation({ rol }) {
                     </svg>
                     <span className="text-[12px] text-white   ">Tienda</span>
                 </Button>
-                <Button click={() => redirectHandlerWindow(`https://api.whatsapp.com/send?phone=+59169941749&text=hola%20mundo`)}>
+                <Button click={redirectHandlerWindow}>
                     <span className="w-11 h-11 mb-1 text-white rounded-full  p-1">
                         <svg width="30" height="30" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0.853564 19.7608C0.852627 23.1216 1.73763 26.4031 3.42044 29.2955L0.692627 39.178L10.8851 36.5262C13.7042 38.0491 16.8628 38.847 20.0726 38.8472H20.0811C30.6772 38.8472 39.3026 30.2917 39.3072 19.7759C39.3092 14.6802 37.3111 9.88857 33.6808 6.28361C30.0511 2.67896 25.2237 0.692755 20.0803 0.69043C9.48294 0.69043 0.858096 9.24547 0.853721 19.7608" fill="transparent" />
@@ -245,7 +248,7 @@ export default function BottomNavigation({ rol }) {
                         </svg>
                         <span className="text-[12px] text-white   ">Verificar</span>
                     </Button>
-                    <Button click={() => redirectHandlerWindow(`https://api.whatsapp.com/send?phone=+59169941749&text=hola%20mundo`)}>
+                    <Button click={redirectHandlerWindow}>
                         <span className="w-11 h-11 mb-1 text-white rounded-full  p-1">
                             <svg width="30" height="30" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M0.853564 19.7608C0.852627 23.1216 1.73763 26.4031 3.42044 29.2955L0.692627 39.178L10.8851 36.5262C13.7042 38.0491 16.8628 38.847 20.0726 38.8472H20.0811C30.6772 38.8472 39.3026 30.2917 39.3072 19.7759C39.3092 14.6802 37.3111 9.88857 33.6808 6.28361C30.0511 2.67896 25.2237 0.692755 20.0803 0.69043C9.48294 0.69043 0.858096 9.24547 0.853721 19.7608" fill="transparent" />
@@ -270,7 +273,7 @@ export default function BottomNavigation({ rol }) {
                         </svg>
                         <span className="text-[12px] text-white   ">Tienda</span>
                     </Button>
-                    <Button click={() => redirectHandlerWindow(`https://api.whatsapp.com/send?phone=+59169941749&text=hola%20mundo`)}>
+                    <Button click={redirectHandlerWindow}>
                         <span className="w-11 h-11 mb-1 text-white rounded-full  p-1">
                             <svg width="30" height="30" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M0.853564 19.7608C0.852627 23.1216 1.73763 26.4031 3.42044 29.2955L0.692627 39.178L10.8851 36.5262C13.7042 38.0491 16.8628 38.847 20.0726 38.8472H20.0811C30.6772 38.8472 39.3026 30.2917 39.3072 19.7759C39.3092 14.6802 37.3111 9.88857 33.6808 6.28361C30.0511 2.67896 25.2237 0.692755 20.0803 0.69043C9.48294 0.69043 0.858096 9.24547 0.853721 19.7608" fill="#4b5563" />
@@ -307,7 +310,7 @@ export default function BottomNavigation({ rol }) {
                     </svg>
                     <span className="text-[12px] text-white   " >Pedidos</span>
                 </Button>
-                <Button click={() => redirectHandlerWindow(`https://api.whatsapp.com/send?phone=+59169941749&text=hola%20mundo`)}>
+                <Button click={redirectHandlerWindow}>
                     <span className="w-11 h-11 mb-1 text-white rounded-full  p-1">
                         <svg width="30" height="30" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0.853564 19.7608C0.852627 23.1216 1.73763 26.4031 3.42044 29.2955L0.692627 39.178L10.8851 36.5262C13.7042 38.0491 16.8628 38.847 20.0726 38.8472H20.0811C30.6772 38.8472 39.3026 30.2917 39.3072 19.7759C39.3092 14.6802 37.3111 9.88857 33.6808 6.28361C30.0511 2.67896 25.2237 0.692755 20.0803 0.69043C9.48294 0.69043 0.858096 9.24547 0.853721 19.7608" fill="transparent" />
