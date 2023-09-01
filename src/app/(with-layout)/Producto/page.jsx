@@ -74,7 +74,7 @@ function Home() {
                     </div>
                 </div> */}
 
-            <div className='flex flex-wrap  shadow-2xl justify-center lg:justify-start md:max-w-[400px] '>
+            <div className='flex flex-wrap bg-white border-[1px] border-gray-200 shadow-2xl justify-center lg:justify-start md:max-w-[400px] '>
                 <img src={item.url} className='lg:w-[90vw] lg:max-w-[400px] max-h-[200px] lg:max-h-[10000px] lg:px-10' alt="" />
                 <div className='w-full flex justify-end  items-center p-5 lg:px-10'>
                     <div className="flex items-baseline text-gray-900">
@@ -83,7 +83,7 @@ function Home() {
                     </div>
                 </div>
             </div>
-            <br />
+       
 
 
 
@@ -99,7 +99,7 @@ function Home() {
                         {item['nombre de producto 3']}
                     </div>
                 </div>
-                <div className='px-5'>
+                <div className='px-5 bg-white'>
 
 
                     <Subtitle styled='text-left'>Descripción basica</Subtitle>
