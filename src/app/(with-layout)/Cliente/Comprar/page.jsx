@@ -193,7 +193,7 @@ function Comprar({ theme, styled, click, children }) {
     <div className='relative border-t-4 border-t-gray-400 bg-white overflow-x-auto items-center justify-between w-full max-w-screen bg-transparent md:w-auto lg:max-w-auto transition-all	z-0' >
     <h3 className='text-center  border-[1px] border-gray-200  bg-white text-[16px] px-5 py-2  font-bold' >MIS COMPRAS</h3>
 
-      <table className="w-full  lg:min-w-[800px] border-[1px] border-gray-200 lg:w-full lg:min-w-auto text-[12px] text-left text-gray-500">
+      <table className="w-full shadow-2xl lg:min-w-[800px] border-[1px] border-gray-200 lg:w-full lg:min-w-auto text-[12px] text-left text-gray-500">
 
         {Object.values(cart).length > 0 && <thead className="text-[12px] text-gray-700 uppercase bg-gray-50">
           <tr>

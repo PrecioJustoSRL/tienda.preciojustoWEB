@@ -55,7 +55,7 @@ function Comprar({ theme, styled, click, children }) {
       return data
     })
 
-    await writeUserData('Receta', { ...recetaDB, medico: user.uuid, qr, receta: arr }, qr, userDB, setUserData, setUserSuccess, 'existos', null)
+    await writeUserData('Receta', { ...recetaDB, medico: user.uuid, qr: dataURL, receta: arr }, qr, userDB, setUserData, setUserSuccess, 'existos', null)
 
 
   }
@@ -79,7 +79,7 @@ function Comprar({ theme, styled, click, children }) {
     // await writeUserData('Receta', { ...recetaDB, medico: user.uuid, qr, receta: arr }, qr, userDB, setUserData, setUserSuccess, 'existos', null)
 
 
-    setQr(null)
+    setQr('')
     setUserCart({})
     setModal('')
     router.push('/Cliente')
