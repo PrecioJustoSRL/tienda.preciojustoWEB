@@ -134,7 +134,7 @@ console.log(distributorPDB)
     return (
         <div className='h-full'>
 
-            <div className="relative overflow-x-auto h-full  overflow-y-auto shadow-md p-5 bg-white min-h-[80vh]">
+            <div className="relative overflow-x-auto h-full  overflow-y-auto shadow-2xl p-5 bg-white min-h-[80vh]">
                 {modal === 'Delete' && <Modal funcion={deletConfirm}>Estas seguro de archivar el siguiente item:  {item['nombre de producto 1']}</Modal>}
 
                 {modal === 'No Data' && <Modal funcion={() => ''}>El identificador no contiene datos o no existe</Modal>}

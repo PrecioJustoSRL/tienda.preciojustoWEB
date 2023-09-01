@@ -128,7 +128,8 @@ function Home() {
 
     return (
 
-        <div className="relative overflow-x-auto shadow-md p-5 bg-white min-h-[80vh]">
+        <div className='h-full'> 
+        <div className="relative h-full overflow-x-auto shadow-2xl p-5 bg-white min-h-[80vh]">
              {modal === 'Delete' && <Modal funcion={deletConfirm}>Estas seguro de ELIMINAR al siguiente usuario: {item.nombre}</Modal>}
             {modal === 'Block' && <Modal funcion={blockConfirm}>Estas seguro de {item.bloqueado ? 'DESBLOQUEAR' :'BLOQUEAR'} al siguiente usuario {item.nombre}</Modal>}
             {modal === 'Access' && <Modal funcion={accessConfirm}>Estas seguro de {item.access ? 'DESIGNAR como SOLICITADOR' :'DESIGNAR como VERIFICADOR'} al siguiente usuario {item.nombre}</Modal>}
@@ -202,7 +203,7 @@ function Home() {
                 <tbody>
                     {temporal && temporal !== undefined && temporal.sort(sortArray).map((i, index) => {
 
-                        return i.access.includes(access) &&  i.ciudad.includes(ciudad) &&  i.nombre.toLowerCase().includes(filter) && <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={index}>
+                        return  i.ciudad.includes(ciudad) && i.access.includes(access) &&  i.nombre.toLowerCase().includes(filter) && <tr className="bg-white text-[12px] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={index}>
                             <td className="px-3 py-4  flex font-semibold text-gray-900 dark:text-white">
                                 <span className='h-full flex py-2'>{index + 1}</span>
                             </td>
@@ -259,7 +260,7 @@ function Home() {
                 </tbody>
             </table>
         </div>
-
+        </div>
     )
 }
 

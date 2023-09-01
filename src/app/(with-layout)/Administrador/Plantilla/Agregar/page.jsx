@@ -129,7 +129,9 @@ function Home() {
     console.log(categorias)
 
     return (
-        <form className='p-10 min-w-screen lg:min-w-auto lg:mb-[70px] bg-white' onSubmit={save}>
+        <div className='min-h-full p-5 pb-[30px] lg:pb-5'> 
+
+        <form className='p-10 min-w-screen  lg:min-w-auto bg-white shadow-2xl min-h-[80vh]' onSubmit={save}>
             <h3 className='text-center text-[16px] pb-3'>Agregar Procucto</h3>
             {/* <div className="w-full flex justify-center">
                 <label htmlFor="file" className="block flex justify-center items-center w-[250px] h-[300px] bg-white border border-gray-300 text-gray-900 text-[14px] focus:ring-blue-500 focus:border-blue-500 rounded-[10px]" >
@@ -214,6 +216,8 @@ function Home() {
             {modal == 'Seleccione una categoria.' && <Modal funcion={() => setUserSuccess('')} alert={true}>{modal}</Modal>}
 
         </form>
+        
+        </div>
     )
 }
 

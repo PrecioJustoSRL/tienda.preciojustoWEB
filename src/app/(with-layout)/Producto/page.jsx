@@ -58,7 +58,7 @@ function Home() {
     }
     console.log(item)
     return (
-        item !== undefined ? <main className="relative lg:shadow-2xl top-[-15px] left-0 right-0 mx-auto px-5 max-w-[900px] flex flex-col items-center lg:flex-row lg:justify-between lg:items-center pt-[20px] pb-[20px]  rounded-[5px]">
+        item !== undefined ? <main className="relative  bg-white  lg:shadow-2xl top-[-15px] lg:top-0 left-0 right-0 mx-auto px-5 max-w-[900px] flex flex-col items-center lg:flex-row lg:justify-between lg:items-center pt-[20px] pb-[20px]  rounded-[5px]">
 
 
             {/* <div className='shadow-2xl rounded-[10px] overflow-hidden'> */}
@@ -74,7 +74,7 @@ function Home() {
                     </div>
                 </div> */}
 
-            <div className='flex flex-wrap bg-white border-[1px] border-gray-200 shadow-2xl justify-center lg:justify-start md:max-w-[400px] '>
+            <div className='flex flex-wrap bg-white border-[1px] border-gray-200 shadow-2xl lg:border-none lg:shadow-none  justify-center lg:justify-start md:max-w-[400px] '>
                 <img src={item.url} className='lg:w-[90vw] lg:max-w-[400px] max-h-[200px] lg:max-h-[10000px] lg:px-10' alt="" />
                 <div className='w-full flex justify-end  items-center p-5 lg:px-10'>
                     <div className="flex items-baseline text-gray-900">

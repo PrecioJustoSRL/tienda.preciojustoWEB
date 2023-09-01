@@ -56,8 +56,8 @@ function Home() {
     // console.log(state)
 
     return (
-        <div className='w-full flex justify-center'>
-            <form className='p-5 bg-white w-full max-w-[800px]' onSubmit={save}>
+        <div className='w-full flex justify-center p-5'>
+            <form className='p-5 bg-white w-full max-w-[800px] p-5 py-10 shadow-2xl ' onSubmit={save}>
                 <h3 className='text-center text-[16px] pb-3'>Agregar Perfil</h3>
                 <div className="w-full flex justify-center">
                     <label htmlFor="file" className="block flex justify-center items-center w-[100px] h-[100px] bg-white border border-gray-300 text-gray-900 text-[14px] focus:ring-blue-500 focus:border-blue-500 rounded-[100px]" >

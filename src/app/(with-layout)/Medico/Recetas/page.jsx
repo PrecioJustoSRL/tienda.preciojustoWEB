@@ -77,7 +77,7 @@ function Home() {
             </div>
             <br />
             <table className="w-full min-w-[700px] text-[12px] text-left text-gray-500 border-t-4 border-gray-400">
-                <thead className="text-[12px] text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <thead className="text-[12px] text-gray-700 uppercase bg-gray-50">
                     <tr>
                         <th scope="col" className="px-3 py-3 text-[16px]">
                             #

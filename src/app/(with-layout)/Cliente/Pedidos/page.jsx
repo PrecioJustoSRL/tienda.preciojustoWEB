@@ -79,9 +79,9 @@ function Home() {
 
     return (
 
-        <div className="relative overflow-x-auto shadow-md ">
-            <table className=" min-w-[1200px] lg:w-full lg:min-w-[1000px] text-[12px] text-left text-gray-500">
-                <thead className="w-full text-[12px] text-gray-700 uppercase bg-gray-50">
+        <div className="relative overflow-x-auto shadow-2xl  ">
+            <table className=" min-w-[1200px] lg:w-full lg:min-w-[1000px] text-[12px] text-left text-gray-500 border-t-4 border-t-gray-400">
+                <thead className="w-full text-[12px]  text-gray-700 uppercase bg-gray-50">
                     <tr>
                         <th scope="col-3" className="px-3 py-3 text-center">
                             #

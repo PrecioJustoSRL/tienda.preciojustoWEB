@@ -104,7 +104,7 @@ function Home() {
 
     return (
         <div className='h-full'> 
-        <div className="relative h-full overflow-x-auto shadow-md p-5 bg-white min-h-[80vh]">
+        <div className="relative h-full overflow-x-auto shadow-2xl p-5 bg-white min-h-[80vh]">
             {modal === 'Delete' && <Modal funcion={deletConfirm}>Estas seguro de eliminar el siguiente item:  {item['nombre de producto 1']}</Modal>}
 
             <h3 className='font-medium text-[16px]'>Lista De Productos</h3>

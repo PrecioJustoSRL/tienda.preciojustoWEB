@@ -101,7 +101,8 @@ function Home() {
 
     return (
 
-        <div className="relative overflow-x-auto shadow-md p-5 bg-white min-h-[80vh]">
+        <div className='h-full'> 
+        <div className="relative h-full overflow-x-auto shadow-2xl p-5 bg-white min-h-[80vh]">
 
             {modal === 'Delete' && <Modal funcion={deletConfirm}>Estas seguro de ELIMINAR al siguiente usuario {msg}</Modal>}
             {modal === 'Block' && <Modal funcion={blockConfirm}>Estas seguro de BLOQUEAR al siguiente usuario {msg}</Modal>}
@@ -262,6 +263,7 @@ function Home() {
                     }
                 </tbody>
             </table>
+        </div>
         </div>
     )
 }

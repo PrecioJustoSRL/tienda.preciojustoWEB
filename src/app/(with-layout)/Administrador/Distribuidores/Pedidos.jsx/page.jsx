@@ -70,7 +70,8 @@ function Home() {
 
     return (
 
-        <div className="relative overflow-x-auto shadow-md">
+        <div className='h-full'> 
+        <div className="relative h-full overflow-x-auto shadow-2xl p-5 bg-white min-h-[80vh]">
             <table className=" min-w-[1500px] lg:w-full lg:min-w-[1000px] text-[12px] text-left text-gray-500">
                 <thead className="text-[12px] text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
@@ -161,7 +162,7 @@ function Home() {
                 </tbody>
             </table>
         </div>
-
+        </div>
     )
 }
 

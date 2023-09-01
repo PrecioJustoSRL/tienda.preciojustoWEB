@@ -22,9 +22,9 @@ function Home() {
         if (user && user.rol !== undefined) readUserData(user.rol, user.uuid, setUserData,)
     }, [user]);
     return (
-        <div className='w-full flex justify-center'>
+        <div className='w-full flex justify-center p-5'>
             {userDB !== undefined && userDB !== null
-                ? <div className=" bg-white  w-full max-w-[800px] p-5 ">
+                ? <div className=" bg-white  w-full max-w-[800px] p-5 py-10 shadow-2xl ">
                     <h3 className='text-center text-[14px] pb-3 font-bold'>Datos Empresariales</h3>
                     <br />
                     <div className=''>

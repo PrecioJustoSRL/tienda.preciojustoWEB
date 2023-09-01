@@ -69,7 +69,8 @@ function Home() {
 
     return (
 
-        <div className="relative overflow-x-auto shadow-md p-5   bg-white min-h-[80vh]">
+        <div className='h-full'> 
+        <div className="relative h-full overflow-x-auto shadow-2xl p-5 bg-white min-h-[80vh] ">
             {modal === 'Delete' && <Modal funcion={deletConfirm}>Estas seguro de ELIMINAR al siguiente usuario {msg}</Modal>}
             <h3 className='font-medium text-[16px]'>Recetas</h3>
             <br />
@@ -77,8 +78,8 @@ function Home() {
                 <input type="text" className='border-b border-gray-300 gap-4 text-center focus:outline-none  w-[300px]' onChange={onChangeFilter} placeholder='Filtrar por nombre de paciente' />
             </div>
             <br />
-            <table className="w-full min-w-[700px] text-[12px] text-left text-gray-500">
-                <thead className="text-[12px] text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <table className="w-full min-w-[700px] text-[12px] text-left text-gray-500 border-t-4 border-gray-400">
+                <thead className="text-[12px] text-gray-700 uppercase bg-gray-50">
                     <tr>
                         <th scope="col" className="px-3 py-3">
                             #
@@ -133,7 +134,7 @@ function Home() {
                 </tbody>
             </table>
         </div>
-
+        </div>
     )
 }
 

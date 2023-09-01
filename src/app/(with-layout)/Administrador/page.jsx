@@ -63,9 +63,9 @@ function Home() {
     }, [user]);
 
     return (
-        <div className='w-full flex justify-center'>
+        <div className='w-full flex justify-center p-5'>
 
-        <form className='p-5 bg-white w-full max-w-[800px]' onSubmit={save} >
+        <form className='p-5 py-10 bg-white w-full max-w-[800px] shadow-2xl' onSubmit={save} >
             {success === "Cargando" && <LoaderBlack></LoaderBlack>}
             <h3 className='text-center text-[14px] pb-3 font-bold'>Datos Empresariales</h3>
             <br />

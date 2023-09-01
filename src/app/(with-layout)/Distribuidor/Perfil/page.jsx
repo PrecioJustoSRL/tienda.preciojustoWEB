@@ -26,9 +26,9 @@ function Home() {
         if (user && user.rol !== undefined) readUserData(user.rol, user.uuid, setUserData,)
     }, []);
     return (
-        <div className='w-full flex justify-center'>
+        <div className='w-full flex justify-center p-5'>
             {userDB !== undefined && userDB !== null
-                ? <div className="min-h-[92vh] bg-white p-5">
+                ? <div className=" bg-white  w-full max-w-[800px] p-5 py-10 shadow-2xl ">
                     <br />
                     <div className="flex justify-center">
                         <img className='h-[100px] w-[100px] rounded-full' src={userDB[0].url} alt="" />
@@ -37,7 +37,7 @@ function Home() {
                     <h3 className='w-full font-base  font-normal text-center '>{userDB[0]['nombre']}</h3>
                     <h3 className='text-[12px] text-center text-emerald-400'>Abierto</h3>
                     <br />
-                    <Subtitle>Quienes Somos</Subtitle>
+                    <Subtitle styled="flex">Quienes Somos</Subtitle>
                     <Paragraph> {userDB[0]['descripcion']}</Paragraph>
                     {/* <div>
                         <Subtitle>Dias de atención</Subtitle>
@@ -60,8 +60,7 @@ function Home() {
                     </div>
                     <Subtitle>Horarios De Atención</Subtitle>
                     <p className=''>{userDB[0]['horarios de apertura']} - {userDB[0]['horarios de cierre']}</p> */}
-                    <Subtitle>Categorias</Subtitle>
-                    <Subtitle>Contactos</Subtitle>
+                    <Subtitle styled="flex">Contactos</Subtitle>
                     <div className=''>
                         <Paragraph> <img className="inline pr-5" src="/telefono.svg" alt="" />{userDB[0]['telefono']}</Paragraph>
                         <Paragraph> <img className="inline pr-5" src="/ubicacion.svg" alt="" />{userDB[0]['direccion']}</Paragraph>

@@ -132,7 +132,7 @@ function Home() {
     return (
         <div className='h-full'> 
 
-        <div className="relative overflow-x-auto h-full  overflow-y-auto shadow-md p-5 bg-white min-h-[80vh]">
+        <div className="relative overflow-x-auto h-full  overflow-y-auto shadow-2xl p-5 bg-white min-h-[80vh]">
                         {modal === 'Delete' && <Modal funcion={deletConfirm}>Estas seguro de desarchivar el siguiente item:  {item['nombre de producto 1']}</Modal>}
 
             {modal === 'No Data' && <Modal funcion={() => ''}>El identificador no contiene datos o no existe</Modal>}
@@ -140,18 +140,15 @@ function Home() {
             {modal === 'Importar PrecioJustoSRL' && <Modal funcion={() => importacionConfirm('Importar PrecioJustoSRL')}>Esta seguro de reimportar los datos, <br /> se perderan los que ya tienes.</Modal>}
             <h3 className='font-medium text-[16px]'>Lista De Productos</h3>
             <br />
-            <div className='grid grid-cols-3 w-[1000px]'>
+            {/* <div className='grid grid-cols-3 w-[1000px]'>
                 <input type="text" onChange={onChangeId} className='border-b border-gray-300 gap-4 text-center focus:outline-none  w-[300px]' placeholder='Ingresa el ID' />
                 <Button theme='Primary' click={() => importacionHandler('Importar ID')}>Importar Datos Mediante ID</Button>
                 {distributorPDB !== null && distributorPDB !== undefined
                     ? <Button theme='Primary' click={() => importacionHandler('Importar PrecioJustoSRL')}>Reimportar Datos De Precio Justo</Button>
                     : <Button theme='Primary' click={() => importacionConfirm('Importar PrecioJustoSRL')}>Importar Datos De Precio Justo</Button>
                 }
-            </div>
-            <div className='grid grid-cols-3 w-[1000px]'>
-                <Input type="text" valu={user.uuid} />
-                <span className='flex items-center text-[14px] pl-5'>*ID para compartir productos</span>
-            </div>
+            </div> */}
+           
             <div className='min-w-[1900px] flex justify-start items-center my-5 '>
                 <h3 className="flex pr-12 text-[14px]" htmlFor="">Disponibilidad</h3>
                 <div className="grid grid-cols-3 gap-4 w-[500px] ">
@@ -187,7 +184,7 @@ function Home() {
                 </div>
             </div>
             <table className="w-[1900px]  text-[12px] text-left text-gray-500 border-t-4 border-gray-400">
-                <thead className="text-[12px] text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <thead className="text-[12px] text-gray-700 uppercase bg-gray-50 ">
                     <tr>
                         <th scope="col" className="px-3 py-3">
                             #
@@ -293,10 +290,10 @@ function Home() {
                     }
                 </tbody>
             </table>
-            <div className='lg:flex hidden lg:fixed top-[100px] right-[65px] '>
+            {/* <div className='lg:flex hidden lg:fixed top-[100px] right-[65px] '>
                 <div className='flex justify-center items-center h-[50px] text-white text-[14px] font-normal font-medium bg-[#32CD32] border border-gray-200 rounded-[10px] px-10 cursor-pointer mr-2' onClick={redirect}>Agregar Producto</div>
                 <div className='flex justify-center items-center bg-[#0064FA] h-[50px] w-[50px]  rounded-full text-white cursor-pointer' onClick={redirect}> <span className='text-white text-[30px]'>+</span> </div>
-            </div>
+            </div> */}
 
             {success == 'Actualizando' && <LoaderBlack />}
 
