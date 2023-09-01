@@ -78,8 +78,9 @@ function Home() {
                 <img src={item.url} className='lg:w-[90vw] lg:max-w-[400px] max-h-[200px] lg:max-h-[10000px] lg:px-10' alt="" />
                 <div className='w-full flex justify-end  items-center p-5 lg:px-10'>
                     <div className="flex items-baseline text-gray-900">
-                        <span className="text-[16px] text-gray-600 font-semibold">BOB</span>
                         <span className="text-[30px]  text-gray-600 font-extrabold tracking-tight">{item.costo}</span>
+                        <span className="text-[16px] text-gray-600 font-semibold">BS</span>
+
                     </div>
                 </div>
             </div>
