@@ -58,7 +58,7 @@ function Home() {
     }
     console.log(item)
     return (
-        item !== undefined ? <main className="relative lg:shadow-2xl top-[-15px] left-0 right-0 mx-auto px-5 max-w-[900px] flex flex-col items-center lg:flex-row lg:justify-between lg:items-center pt-[20px] pb-[20px] bg-white rounded-[5px]">
+        item !== undefined ? <main className="relative lg:shadow-2xl top-[-15px] left-0 right-0 mx-auto px-5 max-w-[900px] flex flex-col items-center lg:flex-row lg:justify-between lg:items-center pt-[20px] pb-[20px]  rounded-[5px]">
 
 
             {/* <div className='shadow-2xl rounded-[10px] overflow-hidden'> */}
