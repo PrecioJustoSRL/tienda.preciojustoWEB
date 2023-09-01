@@ -160,7 +160,7 @@ function Home() {
             </div>}
 
             {filterQR.length > 0  && <div className='relative flex flex-col justify-between items-center left-0 right-0 mx-auto bg-white w-full p-5 max-w-[800px] my-5 z-20'>
-                <h3 className='text-[14px] font-medium mb-4'>Receta Médica</h3>
+                <h3 className='text-[16px] font-medium  mb-4 text-bold'>RECETA MÉDICA</h3>
 
                 <button type="button" className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-[14px] w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" onClick={() => setFilterQR('')}>
                     <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
