@@ -23,12 +23,11 @@
   
   .error {
     max-width: 350px;
-    position: fixed;
-    width: 80%;
+    width: 100%;
     padding: 10px;
     top: 70px;
     right: 15px;
-    border-radius: 50px 0 50px 50px;
+    border-radius: 5px;
     /* background-color: red; */
     background-color: transparent;
     border-bottom: 1px solid transparent;
@@ -39,9 +38,9 @@
     align-items: center;
   
     animation-name: animationRed;
-    animation-duration: 3s;
+    animation-duration: 6s;
     animation-delay: 0;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
     z-index: 100000000;
   }
   
@@ -53,13 +52,13 @@
   
     20% {
       background-color: #ffffff;
-      border: 1px solid #2A52BE;
+      border: 1px solid #fca400;
       color: #636363
     }
   
     80% {
       background-color: #ffffff;
-      border: 1px solid #2A52BE;
+      border: 1px solid #fca400;
       color: #636363
     }
   

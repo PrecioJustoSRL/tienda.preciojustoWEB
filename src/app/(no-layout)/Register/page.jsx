@@ -28,7 +28,7 @@ function Home() {
         setRol(value)
     }
     const onClickHandlerCity = (name, value) => {
-        value !== 'Seleccionar' && setUserSuccess('Importand')
+        value !== 'Seleccionar' && success === null && setUserSuccess('Importand', 6000)
         setCiudad(value)
     }
     const registerHandler = async (e) => {
@@ -102,7 +102,7 @@ function Home() {
                     </div>
                 </form>
             </div>
-            {success == 'Importand' && <Msg>Esta información es importante,<br /> por favor revisa que sea correcta.</Msg>}
+            {/* {success == 'Importand' && <Msg>Esta información es importante,<br /> por favor revisa que sea correcta.</Msg>} */}
         </div>
     )
 }

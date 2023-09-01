@@ -13,7 +13,7 @@ export function UserProvider({ children }) {
 	const [productDB, setProduct] = useState(undefined)
 	const [item, setItem] = useState(undefined)
 	const [cart, setCart] = useState({})
-	const [success, setSuccess] = useState('')
+	const [success, setSuccess] = useState(null)
 	const [pedidos, setPedidos] = useState([])
 	const [qr, setQr] = useState('');
 	const [QRurl, setQRurl] = useState('');
@@ -74,9 +74,11 @@ export function UserProvider({ children }) {
 	const setUserItem = (data) => {
 		setItem(data)
 	}
-	const setUserSuccess = (data) => {
-		setSuccess(data)
-		setTimeout(() => { setUserSuccess(null) }, 6000)
+	const setUserSuccess = (data, time) => {
+		if (success === null) {
+			setSuccess(data)
+			setTimeout(() => {  setUserSuccess(null) }, time ? time : 6000)
+		}
 	}
 
 	const setIntroVideo = (data) => {

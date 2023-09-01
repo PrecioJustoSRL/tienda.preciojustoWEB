@@ -4,11 +4,10 @@ import Button from '@/components/Button'
 
 import { useUser } from '@/context/Context.js'
 import { useRouter } from 'next/navigation';
-import { unstable_renderSubtreeIntoContainer } from 'react-dom';
 
 export default function Card({ nombre1, nombre2, nombre3, costo, url, empresa, descripcion, i, recetado, detalle }) {
 
-    const { setFilterDis, user, userDB, distributorPDB, setUserDistributorPDB, setUserItem, item, setUserData, setUserSuccess, cart, setUserCart, modal, setModal, setFilter } = useUser()
+    const { setFilterDis, user, userDB, distributorPDB, setUserDistributorPDB, setUserItem, item, setUserData, setUserSuccess, cart, setUserCart, modal, setModal, setFilter, success } = useUser()
     const router = useRouter()
     // console.log(userDB)
     function seeMore(e) {
