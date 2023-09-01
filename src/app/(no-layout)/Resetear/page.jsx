@@ -56,7 +56,7 @@ export default function Home() {
             ? <LoaderWithLogo></LoaderWithLogo>
             : <div className="h-full"
                 style={{
-                    backgroundImage: 'url(/bg-signup.avif)',
+                    backgroundImage: 'url(/bg-signup.svg)',
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: 'center',
                     backgroundAttachment: 'fixed',

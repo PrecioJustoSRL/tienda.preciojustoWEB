@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import Button from '@/components/Button';
 import { useUser } from '@/context/Context.js'
-import Subtitle from '@/components/Subtitle'
+import Title from '@/components/Title'
 import { WithAuth } from '@/HOCs/WithAuth'
 import { writeUserData, readUserData, updateUserData } from '@/supabase/utils'
 import { uploadStorage } from '@/supabase/storage'
@@ -117,7 +117,7 @@ function Comprar({ theme, styled, click, children }) {
     {success == 'Complete' && <Msg>Complete el formulario</Msg>}
     <InvoicePDF />
     <form >
-      <Subtitle>DATOS DEL PACIENTE</Subtitle>
+      <Title>DATOS DEL PACIENTE</Title>
       <div className="grid gap-6 mb-6 md:grid-cols-2">
         <div>
           <Label htmlFor="">Nombre del paciente</Label>

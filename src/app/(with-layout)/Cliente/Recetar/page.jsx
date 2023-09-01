@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import Button from '@/components/Button';
 import { useUser } from '@/context/Context.js'
-import Subtitle from '@/components/Subtitle'
+import Title from '@/components/Title'
 import { WithAuth } from '@/HOCs/WithAuth'
 import { writeUserData, readUserData, updateUserData } from '@/supabase/utils'
 import { uploadStorage } from '@/supabase/storage'
@@ -96,7 +96,7 @@ function Comprar({ theme, styled, click, children }) {
     <div className=' bg-white w-full max-w-[800px] p-5 pb-10 shadow-2xl'>
 
       <form className='min-w-[90%]' onSubmit={handlerPay}>
-        <Subtitle>RECETA</Subtitle>
+        <Title>RECETA</Title>
         <div className="grid gap-6 mb-6 md:grid-cols-2">
           <div>
             <Label htmlFor="">Paciente</Label>

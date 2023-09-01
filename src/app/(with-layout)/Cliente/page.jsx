@@ -21,7 +21,7 @@ import { useEffect } from 'react'
 import QrcodeDecoder from 'qrcode-decoder';
 import { QRreaderUtils } from '@/utils/QRreader'
 import { useState } from 'react'
-
+import Title from '@/components/Title'
 function Home() {
     const {filterDis, setFilterDis, user, userDB, cart, setUserCart, modal, setUserData, setModal, productDB, setUserProduct, setUserItem, item, filter, setFilter, filterQR, setTienda, setFilterQR, recetaDBP, setRecetaDBP, tienda, setIntroClientVideo, search, setSearch, distributorPDB, setUserDistributorPDB, webScann, setWebScann, qrBCP, setQrBCP } = useUser()
     const [disponibilidad, setDisponibilidad] = useState('')
@@ -160,7 +160,7 @@ function Home() {
             </div>}
 
             {filterQR.length > 0  && <div className='relative flex flex-col justify-between items-center left-0 right-0 mx-auto bg-white w-full p-5 max-w-[800px] my-5 z-20'>
-                <h3 className='text-[16px] font-medium  mb-4 text-bold'>RECETA MÉDICA</h3>
+                <Title>RECETA MÉDICA</Title>
 
                 <button type="button" className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-[14px] w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" onClick={() => setFilterQR('')}>
                     <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -207,7 +207,7 @@ function Home() {
                 )}
                 <br />
                 { recetaDBP !== null && recetaDBP !== undefined 
-                  ?  <div className=' w-full lg:w-[50%] bg-[#1C355E] text-white text-center p-5 text-[14px] rounded-full z-20'>
+                  ?  <div className=' w-full lg:w-[50%] bg-[#1C355E] text-white text-center p-5 text-[18px] font-bold rounded-full z-20'>
                     Seleccione el producto <br />
                     de su preferencia, Vea que todos <br />
                     esten
