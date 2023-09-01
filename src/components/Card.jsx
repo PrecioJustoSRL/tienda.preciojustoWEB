@@ -83,7 +83,7 @@ export default function Card({ nombre1, nombre2, nombre3, costo, url, empresa, d
             <div>
                 <div className="relative w-[150px] rounded-t text-center" >
                     <img src={i.url} className='w-150px' alt="" />
-                    {recetado === true && <span className='absolute text-[16px] font-bold right-10 top-10 text-[#32CD32] border-4 border-[#32CD32] border-double  transform rotate-[-45deg]'>Recetado <br /> por tu doctor</span>}
+                    {recetado === true && <span className='absolute text-[16px] font-bold right-10 top-10 text-[#32CD32] border-4 border-[#32CD32] border-double  transform rotate-[-45deg]'>RECOMENDADO <br /> POR TU MÉDICO</span>}
                 </div>
                 <div className='flex py-4 pr-4'>
                     <span className={`block text-center w-full text-14 p-2 rounded-[5px] text-[12px] leanding-[0px]`}>
