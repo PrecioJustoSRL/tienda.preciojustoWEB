@@ -44,6 +44,8 @@ export default function Select({arr, name, click, defaultValue, uuid}) {
                     arr.map((i, index)=> <li key={i} className={`mb-2 cursor-pointer py-2 px-3 ${index % 2 === 0 ? 'bg-gray-100' : ''}`} onClick={() => handlerUserState(name, i)}>{i}</li>)
                 }
             </ul>
+            {success == 'Importand' && <Msg>Esta información es importante,<br /> por favor revisa que sea correcta.</Msg>}
+
         </div>
     )
 }
