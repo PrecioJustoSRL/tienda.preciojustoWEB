@@ -43,28 +43,21 @@ function Comprar({ theme, styled, click, children }) {
 
 
 
-  function handlerPay(e) {
+  async function handlerPay(e) {
     e.preventDefault()
     const dataURL = recetaDB.paciente.replaceAll(' ', '') + user.uuid
     handlerQRUrl(dataURL)
-    // const arr = Object.values(cart).map((i) => {
-    //   const data = { ...i }
-    //   delete data['created_at']
-    //   delete data['id']
-    //   return data
-    // })
+    
+    const arr = Object.values(cart).map((i) => {
+      const data = { ...i }
+      delete data['created_at']
+      delete data['id']
+      return data
+    })
 
-// console.log(recetaDB)
-    // writeUserData('Receta', { ...data, ...recetaDB, medico: user.uuid, qr: dataURL }, i.uuid, userDB, setUserData, setUserSuccess, 'existos', null)
-    // writeUserData('Receta', {  ...recetaDB, medico: user.uuid, qr: dataURL, receta: arr}, dataURL, userDB, setUserData, setUserSuccess, 'existos', null)
+    await writeUserData('Receta', { ...recetaDB, medico: user.uuid, qr, receta: arr }, qr, userDB, setUserData, setUserSuccess, 'existos', null)
 
-  }
-  function generarPDF(e) {
-    e.preventDefault()
-  }
 
-  function handlerQRShare() {
-    window.open(`whatsapp://send?text=${encodeURIComponent('https://hhxlyesjmtbhnqwsoplw.supabase.co/storage/v1/object/public/Clinica/9714a0de-aa97-43e0-952b-710ee646710b.webp')}`, '_blank')
   }
 
   function finish() {
@@ -75,23 +68,18 @@ function Comprar({ theme, styled, click, children }) {
 
 
     e.preventDefault()
-  
-    const arr = Object.values(cart).map((i) => {
-      const data = { ...i }
-      delete data['created_at']
-      delete data['id']
-      return data
-    })
 
-// console.log(recetaDB)
-    // writeUserData('Receta', { ...data, ...recetaDB, medico: user.uuid, qr: dataURL }, i.uuid, userDB, setUserData, setUserSuccess, 'existos', null)
-   await writeUserData('Receta', {  ...recetaDB, medico: user.uuid, qr, receta: arr}, qr, userDB, setUserData, setUserSuccess, 'existos', null)
+    // const arr = Object.values(cart).map((i) => {
+    //   const data = { ...i }
+    //   delete data['created_at']
+    //   delete data['id']
+    //   return data
+    // })
+
+    // await writeUserData('Receta', { ...recetaDB, medico: user.uuid, qr, receta: arr }, qr, userDB, setUserData, setUserSuccess, 'existos', null)
 
 
-
-
-
-setQr(null)
+    setQr(null)
     setUserCart({})
     setModal('')
     router.push('/Cliente')
@@ -108,7 +96,7 @@ setQr(null)
     <div className=' bg-white w-full max-w-[800px] p-5'>
 
       <form className='min-w-[90%]' onSubmit={handlerPay}>
-      <Subtitle>RECETA</Subtitle> 
+        <Subtitle>RECETA</Subtitle>
         <div className="grid gap-6 mb-6 md:grid-cols-2">
           <div>
             <Label htmlFor="">Paciente</Label>
@@ -123,7 +111,7 @@ setQr(null)
             <Input type="text" name="hospital" onChange={onChangeHandler} />
           </div>
           <div className='flex items-end w-full'>
-            <Button theme="Success" >Generar QR</Button>
+            <Button theme="Success" >Guardar y Generar QR</Button>
           </div>
         </div>
       </form>
@@ -140,7 +128,7 @@ setQr(null)
             includeMargin={true}
             renderAs={'canvas'}
             viewBox={`0 0 256 256`}
-            imageSettings={{src: '/logo-circle.png', height: 100, width: 100, escavate: false}}
+            imageSettings={{ src: '/logo-circle.png', height: 100, width: 100, escavate: false }}
           />}
         </div>
 
@@ -149,7 +137,7 @@ setQr(null)
       <br />
 
       {qr !== '' && <a
-        className="block text-gray-950 w-full rounded-full bg-[#32CD32] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-[14px]  py-4 text-center z-50"
+        className="block text-gray-950 w-full rounded-full bg-[#32CD32] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-[16px]  py-3 text-center z-50"
         href={QRurl} download>Guardar ImagenQR</a>}
       <br />
       {qr !== '' && <InvoicePDF dbUrl={QRurl} />}
