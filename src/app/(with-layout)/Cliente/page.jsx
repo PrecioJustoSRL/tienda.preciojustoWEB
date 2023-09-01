@@ -23,7 +23,7 @@ import { QRreaderUtils } from '@/utils/QRreader'
 import { useState } from 'react'
 
 function Home() {
-    const {filterDis, setFilterDis, user, userDB, cart, modal, setModal, productDB, setUserProduct, setUserItem, item, filter, setFilter, filterQR, setTienda, setFilterQR, recetaDBP, setRecetaDBP, tienda, setIntroClientVideo, search, setSearch, distributorPDB, setUserDistributorPDB, webScann, setWebScann, qrBCP, setQrBCP } = useUser()
+    const {filterDis, setFilterDis, user, userDB, cart, modal, setUserData, setModal, productDB, setUserProduct, setUserItem, item, filter, setFilter, filterQR, setTienda, setFilterQR, recetaDBP, setRecetaDBP, tienda, setIntroClientVideo, search, setSearch, distributorPDB, setUserDistributorPDB, webScann, setWebScann, qrBCP, setQrBCP } = useUser()
     const [disponibilidad, setDisponibilidad] = useState('')
     const [categoria, setCategoria] = useState('')
     const router = useRouter()
@@ -93,6 +93,7 @@ function Home() {
     useEffect(() => {
         user && user.rol !== 'Medico' ? setTienda('Comprar') : setTienda('Recetar')
         user && user.rol === 'Cliente' && user.video === false && videoHandler()
+        if (user && user.rol !== undefined) readUserData(user.rol, user.uuid, setUserData,)
 
     }, [user, filterQR]);
 

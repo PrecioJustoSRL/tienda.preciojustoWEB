@@ -42,7 +42,7 @@ export default function Button({ click, type, name, onChange, reference, placeho
             </span>}
             {/* {require ?<span className='absolute bottom-[-16px] right-[10px] h-[16px] px-[10px] text-red-500'> *Requerido</span> : <span className='absolute bottom-[-16px] right-[10px] h-[16px] px-[10px]  text-gray-700'>Opcional</span>} */}
 
-            {require ?<span className='absolute top-[-25px] left-[-18px] h-[16px] px-[10px]'> *</span> : ''}
+            {require ?<span className='absolute top-[-28px] left-[-18px] h-[16px] px-[10px]'> *</span> : ''}
         </span>
 
     )

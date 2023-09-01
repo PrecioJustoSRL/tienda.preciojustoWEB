@@ -47,7 +47,7 @@ function Comprar({ theme, styled, click, children }) {
     e.preventDefault()
     const dataURL = recetaDB.paciente.replaceAll(' ', '') + user.uuid
     handlerQRUrl(dataURL)
-    
+
     const arr = Object.values(cart).map((i) => {
       const data = { ...i }
       delete data['created_at']
@@ -91,9 +91,9 @@ function Comprar({ theme, styled, click, children }) {
 
   // console.log(QRurl)
 
-  return (<div className='w-full flex flex-col justify-center items-center'>
+  return (<div className='w-full flex flex-col justify-center items-center p-5'>
     {modal == 'Finish' && <Modal funcion={finishConfirm}>Estas seguro de finalizar se <br /> archivara la receta que generaste.</Modal>}
-    <div className=' bg-white w-full max-w-[800px] p-5'>
+    <div className=' bg-white w-full max-w-[800px] p-5 pb-10 shadow-2xl'>
 
       <form className='min-w-[90%]' onSubmit={handlerPay}>
         <Subtitle>RECETA</Subtitle>
@@ -143,6 +143,7 @@ function Comprar({ theme, styled, click, children }) {
       {qr !== '' && <InvoicePDF dbUrl={QRurl} />}
       <br />
       {qr !== '' && <Button theme='Danger' click={finish}>Receta Completada</Button>}
+      <br />
     </div>
   </div>)
 }
