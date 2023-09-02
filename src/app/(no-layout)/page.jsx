@@ -1,6 +1,6 @@
 'use client'
 import { useUser } from '@/context/Context'
-import { onAuth, signInWithEmailAndPassword, passwordRedirect } from '@/supabase/utils'
+import { onAuth, signInWithEmailAndPassword, passwordRedirect, readUserData } from '@/supabase/utils'
 import { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -14,7 +14,7 @@ import Particles from '@/components/Particles'
 
 
 export default function Home() {
-  const { user, introVideo, setSound, businessData, setIntroVideo, userDB, setUserProfile, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, sound1, sound2, setSound1, setSound2, } = useUser()
+  const { user, introVideo, setSound, setBusinessData, businessData, setIntroVideo, userDB, setUserProfile, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, sound1, sound2, setSound1, setSound2, } = useUser()
   const [isDisable, setIsDisable] = useState(false)
   const router = useRouter()
 
@@ -71,12 +71,12 @@ export default function Home() {
       setUserSuccess('Complete')
       return setTimeout(() => { setIsDisable(false) }, 6000)
     }
-   await signInWithEmailAndPassword(email, password, setUserSuccess)
+    await signInWithEmailAndPassword(email, password, setUserSuccess)
 
-   return setIsDisable(false)
+    return setIsDisable(false)
   }
 
-console.log(user)
+  console.log(user)
 
   useEffect(() => {
     introVideo == undefined ? readIndexedDB() : ''
@@ -85,20 +85,19 @@ console.log(user)
     if (user === null) router.push('/')
     if (user && user.role === 'authenticated') { router.push('/Register') }
     if (user !== undefined && user !== null && user.rol && userDB === undefined) {
-        console.log('ejecu')
-        readUserData(user.rol, user.uuid, setUserData)
+      console.log('ejecu')
+      readUserData(user.rol, user.uuid, setUserData)
     }
     if (user !== undefined && user !== null && user.rol && businessData === undefined) {
-        readUserData('Administrador', 'b9fe0a69-b218-4689-b4ac-03f52e8fe4cc', setBusinessData)
+      readUserData('Administrador', 'b9fe0a69-b218-4689-b4ac-03f52e8fe4cc', setBusinessData)
     }
 
 
   }, [user, introVideo, userDB, businessData])
 
   return (
-    user === undefined
-      ? <LoaderWithLogo></LoaderWithLogo>
-      : <div className="h-full"
+    user === null
+      ? <div className="h-full"
         style={{
           backgroundImage: 'url(/bg-login.avif)',
           backgroundRepeat: 'no-repeat',
@@ -109,7 +108,7 @@ console.log(user)
 
         <Video />
         <div className='w-screen h-screen  flex flex-col justify-center items-center p-5'>
-          <form className={`space-y-6 lg:space-y-3 w-[100%] bg-[#00000090] rounded-[30px] lg:max-w-[350px]  ${introVideo === true || introVideo === null ? 'h-0 overflow-hidden p-0 lg:p-0' : 'h-auto px-5 py-10 lg:p-10'}`} onSubmit={!isDisable ? signInHandler : (e)=>e.preventDefault()} >
+          <form className={`space-y-6 lg:space-y-3 w-[100%] bg-[#00000090] rounded-[30px] lg:max-w-[350px]  ${introVideo === true || introVideo === null ? 'h-0 overflow-hidden p-0 lg:p-0' : 'h-auto px-5 py-10 lg:p-10'}`} onSubmit={!isDisable ? signInHandler : (e) => e.preventDefault()} >
             <div className='w-full text-center flex justify-center'>
               <Image src="/logo-main.svg" width="150" height="150" alt="User" />
             </div>
@@ -137,6 +136,7 @@ console.log(user)
         {success == 'Complete' && <Msg>Complete el formulario</Msg>}
         <Particles />
       </div>
+      : <LoaderWithLogo></LoaderWithLogo>
   )
 }
 
