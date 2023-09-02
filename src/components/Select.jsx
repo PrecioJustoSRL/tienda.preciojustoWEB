@@ -36,7 +36,7 @@ export default function Select({arr, name, click, defaultValue, uuid}) {
                 </div>
            <ul className={select ? `py-3 absolute h-[150px] overflow-y-auto  left-0 top-12 bg-gray-50 outline outline-1 outline-gray-300 text-gray-900 text-[14px] rounded-b-xl focus:ring-blue-500 focus:outline-blue-500 w-full z-50`: 'hidden' } >
                 {
-                    arr.map((i, index)=> <li key={i} className={`mb-2 cursor-pointer py-2 px-3 ${index % 2 === 0 ? 'bg-gray-100' : ''}`} onClick={() => handlerUserState(name, i)}>{i}</li>)
+                    arr.map((i, index)=> <li key={i} className={`mb-2 cursor-pointer py-2 px-3 font-semibold ${index % 2 === 0 ? 'bg-gray-100' : ''}`} onClick={() => handlerUserState(name, i)}>{i}</li>)
                 }
             </ul>
         </div>

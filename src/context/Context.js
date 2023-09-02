@@ -77,7 +77,11 @@ export function UserProvider({ children }) {
 	const setUserSuccess = (data, time) => {
 		if (success === null) {
 			setSuccess(data)
-			setTimeout(() => {  setUserSuccess(null) }, time ? time : 6000)
+			const timer = setTimeout(() => { 			
+				console.log(success)
+				setUserSuccess(null), 
+				clearTimeout(timer) 
+			}, time ? time : 6000)
 		}
 	}
 

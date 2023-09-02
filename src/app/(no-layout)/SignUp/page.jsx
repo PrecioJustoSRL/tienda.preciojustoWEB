@@ -28,7 +28,10 @@ export default function Home() {
     setUserSuccess('Complete')
     return
    }
-
+   if ( password.length < 8 ){
+    setUserSuccess('ContraseñaCorta')
+    return
+   }
     const data = await signUpWithEmailAndPassword(email, password, setUserProfile)
     console.log(data)
     setUserProfile(data.user)
@@ -74,6 +77,7 @@ export default function Home() {
           </div>
         </form>
       </div>
+      {success == 'ContraseñaCorta' && <Msg>La contraseña es muy corta</Msg>}
       {success == 'CuentaExiste' && <Msg>Cuenta ya registrada</Msg>}
       {success == 'Complete' && <Msg>Complete el formulario</Msg>}
     </div>
