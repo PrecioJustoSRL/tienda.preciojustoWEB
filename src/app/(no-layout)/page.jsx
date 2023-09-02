@@ -14,7 +14,7 @@ import Particles from '@/components/Particles'
 
 
 export default function Home() {
-  const { user, introVideo, setSound, setIntroVideo, userDB, setUserProfile, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, sound1, sound2, setSound1, setSound2, } = useUser()
+  const { user, introVideo, setSound, businessData, setIntroVideo, userDB, setUserProfile, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, sound1, sound2, setSound1, setSound2, } = useUser()
   const [isDisable, setIsDisable] = useState(false)
   const router = useRouter()
 
@@ -76,13 +76,24 @@ export default function Home() {
    return setIsDisable(false)
   }
 
-
+console.log(user)
 
   useEffect(() => {
     introVideo == undefined ? readIndexedDB() : ''
-    user === undefined && onAuth(setUserProfile)
     if (user !== undefined && user !== null) router.replace('/Cliente')
-  }, [user])
+    if (user === undefined) onAuth(setUserProfile)
+    if (user === null) router.push('/')
+    if (user && user.role === 'authenticated') { router.push('/Register') }
+    if (user !== undefined && user !== null && user.rol && userDB === undefined) {
+        console.log('ejecu')
+        readUserData(user.rol, user.uuid, setUserData)
+    }
+    if (user !== undefined && user !== null && user.rol && businessData === undefined) {
+        readUserData('Administrador', 'b9fe0a69-b218-4689-b4ac-03f52e8fe4cc', setBusinessData)
+    }
+
+
+  }, [user, introVideo, userDB, businessData])
 
   return (
     user === undefined
